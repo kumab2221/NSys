@@ -125,6 +125,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;       // Enable Viewports
 
     // Setup Dear ImGui style
     ImGui::StyleColorsDark();
@@ -197,6 +199,22 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         ImGui_ImplWin32_NewFrame();
         ImGui::NewFrame();
 
+        {
+            // Docking Space
+            ImGuiViewport* viewport = ImGui::GetMainViewport();
+            ImGui::SetNextWindowPos(viewport->Pos);
+            ImGui::SetNextWindowSize(viewport->Size);
+            ImGui::SetNextWindowViewport(viewport->ID);
+            ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+            ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+            ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+            ImGui::Begin("DockSpace", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus | ImGuiWindowFlags_NoBackground);
+            ImGui::PopStyleVar(3);
+            ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
+            ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_PassthruCentralNode);
+            ImGui::End();
+        }
+
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
@@ -237,6 +255,12 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         // Rendering
         ImGui::Render();
 
+        ImGuiStyle& style = ImGui::GetStyle();
+        if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
+            style.WindowRounding = 0.0f;
+            style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+        }
+
         FrameContext* frameCtx = WaitForNextFrameResources();
         UINT backBufferIdx = g_pSwapChain->GetCurrentBackBufferIndex();
         frameCtx->CommandAllocator->Reset();
@@ -257,6 +281,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         g_pd3dCommandList->OMSetRenderTargets(1, &g_mainRenderTargetDescriptor[backBufferIdx], FALSE, nullptr);
         g_pd3dCommandList->SetDescriptorHeaps(1, &g_pd3dSrvDescHeap);
         ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), g_pd3dCommandList);
+        if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
+            ImGui::UpdatePlatformWindows();
+            ImGui::RenderPlatformWindowsDefault();
+        }
         barrier.Transition.StateBefore = D3D12_RESOURCE_STATE_RENDER_TARGET;
         barrier.Transition.StateAfter = D3D12_RESOURCE_STATE_PRESENT;
         g_pd3dCommandList->ResourceBarrier(1, &barrier);

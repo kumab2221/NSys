@@ -13,57 +13,60 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="external">
+      <UniqueIdentifier>{115e5457-079b-4a00-800d-1ab66523e5f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\imgui.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>external</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\imgui_demo.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>external</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\imgui_draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\imgui\imgui_tables.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="external\imgui\imgui_widgets.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>external</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\backends\imgui_impl_dx12.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>external</Filter>
     </ClCompile>
     <ClCompile Include="external\imgui\backends\imgui_impl_win32.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>external</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_tables.cpp">
+      <Filter>external</Filter>
+    </ClCompile>
+    <ClCompile Include="external\imgui\imgui_widgets.cpp">
+      <Filter>external</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="external\imgui\imconfig.h">
-      <Filter>Header Files</Filter>
+      <Filter>external</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\imgui.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imgui_internal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imstb_rectpack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imstb_textedit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="external\imgui\imstb_truetype.h">
-      <Filter>Header Files</Filter>
+      <Filter>external</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\backends\imgui_impl_dx12.h">
-      <Filter>Header Files</Filter>
+      <Filter>external</Filter>
     </ClInclude>
     <ClInclude Include="external\imgui\backends\imgui_impl_win32.h">
-      <Filter>Header Files</Filter>
+      <Filter>external</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imgui_internal.h">
+      <Filter>external</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imstb_rectpack.h">
+      <Filter>external</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imstb_textedit.h">
+      <Filter>external</Filter>
+    </ClInclude>
+    <ClInclude Include="external\imgui\imstb_truetype.h">
+      <Filter>external</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

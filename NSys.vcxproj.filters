@@ -42,6 +42,9 @@
     <ClCompile Include="external\imgui\imgui_widgets.cpp">
       <Filter>external</Filter>
     </ClCompile>
+    <ClCompile Include="ImGuiWindowManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="external\imgui\imconfig.h">
@@ -67,6 +70,12 @@
     </ClInclude>
     <ClInclude Include="external\imgui\imstb_truetype.h">
       <Filter>external</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuiWindowManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

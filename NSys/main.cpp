@@ -15,6 +15,9 @@
 #pragma comment(lib, "dxguid.lib")
 #endif
 
+typedef void (*DrawImGuiFunc)(ImGuiContext*, ID3D12Device*, ID3D12CommandQueue*);
+
+
 // Config for example app
 static const int APP_NUM_FRAMES_IN_FLIGHT = 3;
 static const int APP_NUM_BACK_BUFFERS = 3;
@@ -102,6 +105,14 @@ LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 // Main code
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
+
+    // DLLをロード
+    HMODULE hDll = LoadLibrary(L"PluginTest.dll");
+    if (!hDll)
+    {
+        return -1;
+    }
+
     // Create application window
     //ImGui_ImplWin32_EnableDpiAwareness();
     WNDCLASSEXW wc = { sizeof(wc), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(nullptr), nullptr, nullptr, nullptr, nullptr, L"ImGui Example", nullptr };
@@ -123,6 +134,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
+    ImGuiContext* shared_context = ImGui::GetCurrentContext();  // 現在のコンテキストを取得
+
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
@@ -153,6 +166,14 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     bool show_demo_window = true;
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
+
+    // DLL内の描画関数を取得
+    auto DrawImGui = (DrawImGuiFunc)GetProcAddress(hDll, "DrawImGui");
+    if (!DrawImGui)
+    {
+        FreeLibrary(hDll);
+        return -1;
+    }
 
     // Main loop
     bool done = false;
@@ -215,7 +236,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         
         }
         
-
+        DrawImGui(shared_context, g_pd3dDevice, g_pd3dCommandQueue);
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);

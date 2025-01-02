@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.10.35027.167
+VisualStudioVersion = 17.11.35431.28
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NSys", "NSys.vcxproj", "{5FEBC790-A910-4B6F-9243-154A903FC3F8}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NSys", "NSys\NSys.vcxproj", "{5FEBC790-A910-4B6F-9243-154A903FC3F8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PluginTest", "PluginTest\PluginTest.vcxproj", "{2EC330AF-4738-4657-BA5B-038B2FE52CBA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,11 +23,19 @@ Global
 		{5FEBC790-A910-4B6F-9243-154A903FC3F8}.Release|x64.Build.0 = Release|x64
 		{5FEBC790-A910-4B6F-9243-154A903FC3F8}.Release|x86.ActiveCfg = Release|Win32
 		{5FEBC790-A910-4B6F-9243-154A903FC3F8}.Release|x86.Build.0 = Release|Win32
+		{2EC330AF-4738-4657-BA5B-038B2FE52CBA}.Debug|x64.ActiveCfg = Debug|x64
+		{2EC330AF-4738-4657-BA5B-038B2FE52CBA}.Debug|x64.Build.0 = Debug|x64
+		{2EC330AF-4738-4657-BA5B-038B2FE52CBA}.Debug|x86.ActiveCfg = Debug|Win32
+		{2EC330AF-4738-4657-BA5B-038B2FE52CBA}.Debug|x86.Build.0 = Debug|Win32
+		{2EC330AF-4738-4657-BA5B-038B2FE52CBA}.Release|x64.ActiveCfg = Release|x64
+		{2EC330AF-4738-4657-BA5B-038B2FE52CBA}.Release|x64.Build.0 = Release|x64
+		{2EC330AF-4738-4657-BA5B-038B2FE52CBA}.Release|x86.ActiveCfg = Release|Win32
+		{2EC330AF-4738-4657-BA5B-038B2FE52CBA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {0B1AF1EB-4C3C-47D5-86CB-BD7383A41B1D}
+		SolutionGuid = {FEC455E9-91ED-4228-B3BA-D611EFCBE0D3}
 	EndGlobalSection
 EndGlobal

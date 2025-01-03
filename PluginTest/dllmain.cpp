@@ -22,7 +22,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 
 
 // 描画関数のエクスポート
-extern "C" __declspec(dllexport) void DrawImGui(ImGuiContext* shared_context, ID3D12Device* device, ID3D12CommandQueue* command_queue)
+extern "C" __declspec(dllexport) void run(ImGuiContext* shared_context, const void*inputs, void *outputs)
 {
     // ImGuiのコンテキストをセット
     ImGui::SetCurrentContext(shared_context);

@@ -4,6 +4,12 @@
 #include <d3d12.h>
 #include <dxgi1_4.h>
 #include <tchar.h>
+#include <filesystem>
+#include <vector>
+#include <string>
+#include <iostream>
+#include <locale>
+
 #include "ImGuiWindowManager.h"
 
 #ifdef _DEBUG
@@ -15,7 +21,118 @@
 #pragma comment(lib, "dxguid.lib")
 #endif
 
-typedef void (*DrawImGuiFunc)(ImGuiContext*, ID3D12Device*, ID3D12CommandQueue*);
+// ワイド文字列をマルチバイト文字列に変換する関数
+std::string WStringToString(const std::wstring& wstr) {
+    if (wstr.empty()) {
+        return std::string();
+    }
+
+    // 必要なバッファサイズを計算
+    int sizeNeeded = WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), (int)wstr.size(), nullptr, 0, nullptr, nullptr);
+    if (sizeNeeded == 0) {
+        throw std::runtime_error("Failed to convert wide string to string");
+    }
+
+    // 変換後のバッファを確保
+    std::string result(sizeNeeded, 0);
+    WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), (int)wstr.size(), &result[0], sizeNeeded, nullptr, nullptr);
+
+    return result;
+}
+
+using PluginFunc = void (*)(ImGuiContext*, const void*, void*);
+
+// プラグイン情報
+struct Plugin {
+    HMODULE handle;
+    PluginFunc runFunc;
+    std::wstring name;
+    bool visible; // 表示状態を管理
+};
+
+static std::vector<Plugin> plugins; // ロードされたプラグインリスト
+
+std::wstring GetExecutableDirectory() {
+    wchar_t buffer[MAX_PATH];
+    GetModuleFileNameW(nullptr, buffer, MAX_PATH);
+    std::filesystem::path exePath(buffer);
+    return exePath.parent_path().wstring();
+}
+
+void LoadPlugins(const std::wstring& pluginDir) {
+    try {
+        for (const auto& entry : std::filesystem::directory_iterator(pluginDir)) {
+            if (entry.is_directory()) {
+                // プラグインフォルダ名を取得
+                auto pluginFolder = entry.path();
+                auto pluginName = pluginFolder.filename().wstring();
+
+                // DLLのパスを作成
+                auto dllPath = pluginFolder / (pluginName + L".dll");
+
+                if (std::filesystem::exists(dllPath)) {
+                    // DLLをロード
+                    HMODULE hDll = LoadLibrary(dllPath.c_str());
+                    if (hDll) {
+                        auto run = (PluginFunc)GetProcAddress(hDll, "run");
+                        if (run) {
+                            // プラグイン情報を追加
+                            plugins.push_back({ hDll, run, pluginName});
+                            std::wcerr << L"Loaded plugin: " << pluginName << std::endl;
+                        }
+                        else {
+                            std::wcerr << L"Failed to load 'run' function from " << dllPath.filename() << std::endl;
+                            FreeLibrary(hDll);
+                        }
+                    }
+                    else {
+                        std::wcerr << L"Failed to load DLL: " << dllPath.filename() << std::endl;
+                    }
+                }
+                else {
+                    std::wcerr << L"Missing DLL in folder: " << pluginName << std::endl;
+                }
+            }
+        }
+    }
+    catch (const std::exception& ex) {
+        std::cerr << "Error loading plugins: " << ex.what() << std::endl;
+    }
+
+}
+void UnloadPlugins(std::vector<Plugin>& plugins) {
+    for (auto& plugin : plugins) {
+        FreeLibrary(plugin.handle);
+    }
+    plugins.clear();
+}
+
+void ShowMainMenuBar() {
+    if (ImGui::BeginMainMenuBar()) {
+        if (ImGui::BeginMenu("View")) {
+            for (auto& plugin : plugins) {
+                // ワイド文字列をマルチバイト文字列に変換
+                std::string pluginName = WStringToString(plugin.name);
+                if (ImGui::MenuItem(pluginName.c_str(), nullptr, &plugin.visible)) {
+                    // チェック状態が切り替わった場合の処理
+                    std::wcout << L"Plugin visibility toggled: " << plugin.name
+                        << L" -> " << (plugin.visible ? L"Visible" : L"Hidden") << std::endl;
+                }
+            }
+            ImGui::EndMenu();
+        }
+        ImGui::EndMainMenuBar();
+    }
+}
+
+void RenderPlugins() {
+    for (const auto& plugin : plugins) {
+        if (plugin.visible && plugin.runFunc) {
+            // プラグインの表示を実行
+            plugin.runFunc(ImGui::GetCurrentContext(), nullptr, nullptr);
+        }
+    }
+}
 
 
 // Config for example app
@@ -103,15 +220,8 @@ FrameContext* WaitForNextFrameResources();
 LRESULT WINAPI WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
 // Main code
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+int main(int argc, char* argv[])
 {
-
-    // DLLをロード
-    HMODULE hDll = LoadLibrary(L"PluginTest.dll");
-    if (!hDll)
-    {
-        return -1;
-    }
 
     // Create application window
     //ImGui_ImplWin32_EnableDpiAwareness();
@@ -167,13 +277,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    // DLL内の描画関数を取得
-    auto DrawImGui = (DrawImGuiFunc)GetProcAddress(hDll, "DrawImGui");
-    if (!DrawImGui)
-    {
-        FreeLibrary(hDll);
-        return -1;
-    }
+    // Pluginsフォルダ内のプラグインをロード
+    std::wstring pluginDir = GetExecutableDirectory() + L"\\Plugins";
+    LoadPlugins(pluginDir);
 
     // Main loop
     bool done = false;
@@ -236,7 +342,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         
         }
         
-        DrawImGui(shared_context, g_pd3dDevice, g_pd3dCommandQueue);
+        // プラグインごとの表示処理
+        RenderPlugins();
+
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
@@ -305,6 +413,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     }
 
     WaitForLastSubmittedFrame();
+
+    // プラグインのクリーンアップ
+    UnloadPlugins(plugins);
 
     // Cleanup
     ImGui_ImplDX12_Shutdown();

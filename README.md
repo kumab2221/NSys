@@ -14,7 +14,24 @@ NSys/
 ├── PluginTest/              # プラグインテスト用プロジェクト
 │   ├── external/imgui/      # ImGuiライブラリ（サブモジュール）
 │   ├── dllmain.cpp
-│   └── framework.h
+│   ├── framework.h
+│   └── README.md
+├── CSVNodeEditor/           # ノードプログラミング型CSV解析ツール
+│   ├── external/            # 外部ライブラリ（サブモジュール）
+│   │   ├── imgui/          # ImGuiライブラリ
+│   │   ├── imnodes/        # ImNodesライブラリ
+│   │   └── implot/         # ImPlotライブラリ
+│   ├── CSVNodeEditor.h     # メインクラス
+│   ├── CSVNodeEditor.cpp   # メイン実装
+│   ├── NodeEditor.h        # ノードエディタ
+│   ├── NodeEditor.cpp      # ノードエディタ実装
+│   ├── CSVData.h           # CSVデータ処理
+│   ├── CSVData.cpp         # CSVデータ処理実装
+│   ├── NodeTypes.h         # ノードタイプ定義
+│   ├── NodeTypes.cpp       # ノードタイプ実装
+│   ├── dllmain.cpp         # DLLエントリーポイント
+│   ├── framework.h         # 共通ヘッダー
+│   └── README.md           # プラグイン説明
 └── README.md
 ```
 
@@ -23,6 +40,22 @@ NSys/
 - Visual Studio 2019以降
 - Git
 - CMake（必要に応じて）
+
+## プラグイン
+
+### PluginTest
+基本的なプラグイン機能のテスト用プロジェクトです。ImGuiコンテキストを共有してメインアプリケーションと連携します。
+
+### CSVNodeEditor
+ノードプログラミング型CSV解析ツールです。以下の機能を提供します：
+
+- **ノードベースのデータ処理フロー構築**
+- **CSVファイルの読み込み・保存**
+- **複数タブでの並列編集**
+- **Dockingウィンドウ対応**
+- **各種データ処理ノード**（フィルター、ソート、集計、結合等）
+
+詳細は [CSVNodeEditor/README.md](CSVNodeEditor/README.md) を参照してください。
 
 ## セットアップ手順
 

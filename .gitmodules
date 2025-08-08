@@ -6,3 +6,13 @@
 	path = NSys/external/imgui
 	url = https://github.com/ocornut/imgui.git
 	branch = docking
+[submodule "CSVNodeEditor/external/imnodes"]
+	path = CSVNodeEditor/external/imnodes
+	url = https://github.com/Nelarius/imnodes.git
+[submodule "CSVNodeEditor/external/implot"]
+	path = CSVNodeEditor/external/implot
+	url = https://github.com/epezent/implot.git
+[submodule "CSVNodeEditor/external/imgui"]
+	path = CSVNodeEditor/external/imgui
+	url = https://github.com/ocornut/imgui.git
+	branch = docking

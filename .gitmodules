@@ -1,8 +1,8 @@
 [submodule "PluginTest/external/imgui"]
 	path = PluginTest/external/imgui
 	url = https://github.com/ocornut/imgui.git
-	branch = v1.91.6-docking
+	branch = docking
 [submodule "NSys/external/imgui"]
 	path = NSys/external/imgui
 	url = https://github.com/ocornut/imgui.git
-	branch = v1.91.6-docking
+	branch = docking

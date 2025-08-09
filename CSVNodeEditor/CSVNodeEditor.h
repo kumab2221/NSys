@@ -8,18 +8,18 @@
 #include <memory>
 #include <unordered_map>
 
-// ƒvƒ‰ƒOƒCƒ“‚ÌƒƒCƒ“ƒNƒ‰ƒX
+// ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ãƒ¡ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹
 class CSVNodeEditor
 {
 public:
     CSVNodeEditor();
     ~CSVNodeEditor();
 
-    // ƒƒCƒ“•`‰æŠÖ”
+    // ãƒ¡ã‚¤ãƒ³æç”»é–¢æ•°
     void Render();
 
 private:
-    // ƒ^ƒuŠÇ—
+    // ã‚¿ãƒ–ç®¡ç†
     struct TabData
     {
         std::string name;
@@ -31,24 +31,24 @@ private:
     std::vector<TabData> tabs;
     int currentTab;
 
-    // UIó‘Ô
+    // UIçŠ¶æ…‹
     bool showNodePalette;
     bool showProperties;
     bool showDataPreview;
     bool showLog;
 
-    // ƒtƒ@ƒCƒ‹‘€ì
+    // ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œ
     void OpenCSVFile();
     void SaveCSVFile();
     void NewTab();
     void CloseTab(int index);
 
-    // ƒm[ƒhƒpƒŒƒbƒg
+    // ãƒãƒ¼ãƒ‰ãƒ‘ãƒ¬ãƒƒãƒˆ
     void RenderNodePalette();
     void RenderProperties();
     void RenderDataPreview();
     void RenderLog();
 
-    // ƒƒjƒ…[ƒo[
+    // ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼
     void RenderMenuBar();
 };

@@ -1,174 +1,174 @@
-# CSVNodeEditor ƒvƒ‰ƒOƒCƒ“
+# CSVNodeEditor ãƒ—ãƒ©ã‚°ã‚¤ãƒ³
 
-NSysƒvƒ‰ƒOƒCƒ“ƒA[ƒLƒeƒNƒ`ƒƒ‚ðŽg—p‚µ‚½ƒm[ƒhƒvƒƒOƒ‰ƒ~ƒ“ƒOŒ^CSV‰ðÍƒc[ƒ‹‚Å‚·B
+NSysãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£ã‚’ä½¿ç”¨ã—ãŸãƒŽãƒ¼ãƒ‰ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°åž‹CSVè§£æžãƒ„ãƒ¼ãƒ«ã§ã™ã€‚
 
-## ŠT—v
+## æ¦‚è¦
 
-CSVNodeEditor‚ÍAImGuiAImNodesAImPlot‚ðŽg—p‚µ‚Ä\’z‚³‚ê‚½ƒm[ƒhƒx[ƒX‚ÌCSVƒf[ƒ^‰ðÍƒvƒ‰ƒOƒCƒ“‚Å‚·B’¼Š´“I‚Èƒhƒ‰ƒbƒO&ƒhƒƒbƒvƒCƒ“ƒ^[ƒtƒF[ƒX‚ÅCSVƒf[ƒ^‚Ìˆ—ƒtƒ[‚ð\’z‚Å‚«‚Ü‚·B
+CSVNodeEditorã¯ã€ImGuiã€ImNodesã€ImPlotã‚’ä½¿ç”¨ã—ã¦æ§‹ç¯‰ã•ã‚ŒãŸãƒŽãƒ¼ãƒ‰ãƒ™ãƒ¼ã‚¹ã®CSVãƒ‡ãƒ¼ã‚¿è§£æžãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã§ã™ã€‚ç›´æ„Ÿçš„ãªãƒ‰ãƒ©ãƒƒã‚°&ãƒ‰ãƒ­ãƒƒãƒ—ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã§CSVãƒ‡ãƒ¼ã‚¿ã®å‡¦ç†ãƒ•ãƒ­ãƒ¼ã‚’æ§‹ç¯‰ã§ãã¾ã™ã€‚
 
-## ‹@”\
+## æ©Ÿèƒ½
 
-### Šî–{‹@”\
-- **CSVƒtƒ@ƒCƒ‹‚Ì“Ç‚Ýž‚ÝE•Û‘¶**
-- **ƒm[ƒhƒx[ƒX‚Ìƒf[ƒ^ˆ—ƒtƒ[\’z**
-- **•¡”ƒ^ƒu‚Å‚Ì•À—ñ•ÒW**
-- **DockingƒEƒBƒ“ƒhƒE‘Î‰ž**
+### åŸºæœ¬æ©Ÿèƒ½
+- **CSVãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ãƒ»ä¿å­˜**
+- **ãƒŽãƒ¼ãƒ‰ãƒ™ãƒ¼ã‚¹ã®ãƒ‡ãƒ¼ã‚¿å‡¦ç†ãƒ•ãƒ­ãƒ¼æ§‹ç¯‰**
+- **è¤‡æ•°ã‚¿ãƒ–ã§ã®ä¸¦åˆ—ç·¨é›†**
+- **Dockingã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å¯¾å¿œ**
 
-### —˜—p‰Â”\‚Èƒm[ƒh
+### åˆ©ç”¨å¯èƒ½ãªãƒŽãƒ¼ãƒ‰
 
-#### ƒf[ƒ^“ü—Í
-- **CSV“Ç‚Ýž‚Ýƒm[ƒh**: CSVƒtƒ@ƒCƒ‹‚ð“Ç‚Ýž‚ÝAƒf[ƒ^‚ðo—Í
+#### ãƒ‡ãƒ¼ã‚¿å…¥åŠ›
+- **CSVèª­ã¿è¾¼ã¿ãƒŽãƒ¼ãƒ‰**: CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿ã€ãƒ‡ãƒ¼ã‚¿ã‚’å‡ºåŠ›
 
-#### ƒf[ƒ^ˆ—
-- **ƒtƒBƒ‹ƒ^[ƒm[ƒh**: ðŒ‚ÉŠî‚Ã‚¢‚Äƒf[ƒ^‚ðƒtƒBƒ‹ƒ^ƒŠƒ“ƒO
-- **ƒ\[ƒgƒm[ƒh**: Žw’è‚µ‚½—ñ‚Åƒf[ƒ^‚ðƒ\[ƒg
-- **WŒvƒm[ƒh**: ƒOƒ‹[ƒv‰»‚ÆWŒvŠÖ”‚ð“K—p
-- **Œ‹‡ƒm[ƒh**: •¡”‚Ìƒf[ƒ^ƒZƒbƒg‚ðŒ‹‡
+#### ãƒ‡ãƒ¼ã‚¿å‡¦ç†
+- **ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ãƒŽãƒ¼ãƒ‰**: æ¡ä»¶ã«åŸºã¥ã„ã¦ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°
+- **ã‚½ãƒ¼ãƒˆãƒŽãƒ¼ãƒ‰**: æŒ‡å®šã—ãŸåˆ—ã§ãƒ‡ãƒ¼ã‚¿ã‚’ã‚½ãƒ¼ãƒˆ
+- **é›†è¨ˆãƒŽãƒ¼ãƒ‰**: ã‚°ãƒ«ãƒ¼ãƒ—åŒ–ã¨é›†è¨ˆé–¢æ•°ã‚’é©ç”¨
+- **çµåˆãƒŽãƒ¼ãƒ‰**: è¤‡æ•°ã®ãƒ‡ãƒ¼ã‚¿ã‚»ãƒƒãƒˆã‚’çµåˆ
 
-#### ƒf[ƒ^o—Í
-- **CSVo—Íƒm[ƒh**: ˆ—Œ‹‰Ê‚ðCSVƒtƒ@ƒCƒ‹‚Æ‚µ‚Ä•Û‘¶
+#### ãƒ‡ãƒ¼ã‚¿å‡ºåŠ›
+- **CSVå‡ºåŠ›ãƒŽãƒ¼ãƒ‰**: å‡¦ç†çµæžœã‚’CSVãƒ•ã‚¡ã‚¤ãƒ«ã¨ã—ã¦ä¿å­˜
 
-### UI\¬
+### UIæ§‹æˆ
 
-- **ƒƒjƒ…[ƒo[**: ƒtƒ@ƒCƒ‹‘€ìA•\Ž¦Ý’èAŽÀs§Œä
-- **ƒ^ƒuƒo[**: •¡”‚Ìˆ—ƒtƒ[‚ðŠÇ—
-- **ƒm[ƒhƒpƒŒƒbƒg**: —˜—p‰Â”\‚Èƒm[ƒh‚Ìˆê——
-- **ƒvƒƒpƒeƒBƒpƒlƒ‹**: ‘I‘ð‚³‚ê‚½ƒm[ƒh‚ÌÝ’è
-- **ƒf[ƒ^ƒvƒŒƒrƒ…[**: CSVƒf[ƒ^‚Ì“à—e•\Ž¦
-- **ƒƒOƒpƒlƒ‹**: ˆ—ó‹µ‚Ì•\Ž¦
+- **ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼**: ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œã€è¡¨ç¤ºè¨­å®šã€å®Ÿè¡Œåˆ¶å¾¡
+- **ã‚¿ãƒ–ãƒãƒ¼**: è¤‡æ•°ã®å‡¦ç†ãƒ•ãƒ­ãƒ¼ã‚’ç®¡ç†
+- **ãƒŽãƒ¼ãƒ‰ãƒ‘ãƒ¬ãƒƒãƒˆ**: åˆ©ç”¨å¯èƒ½ãªãƒŽãƒ¼ãƒ‰ã®ä¸€è¦§
+- **ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ãƒ‘ãƒãƒ«**: é¸æŠžã•ã‚ŒãŸãƒŽãƒ¼ãƒ‰ã®è¨­å®š
+- **ãƒ‡ãƒ¼ã‚¿ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼**: CSVãƒ‡ãƒ¼ã‚¿ã®å†…å®¹è¡¨ç¤º
+- **ãƒ­ã‚°ãƒ‘ãƒãƒ«**: å‡¦ç†çŠ¶æ³ã®è¡¨ç¤º
 
-## ƒvƒƒWƒFƒNƒg\¬
+## ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆæ§‹æˆ
 
 ```
 CSVNodeEditor/
-„¥„Ÿ„Ÿ external/
-„    „¥„Ÿ„Ÿ imgui/          # ImGuiƒ‰ƒCƒuƒ‰ƒŠiƒTƒuƒ‚ƒWƒ…[ƒ‹j
-„    „¥„Ÿ„Ÿ imnodes/        # ImNodesƒ‰ƒCƒuƒ‰ƒŠiƒTƒuƒ‚ƒWƒ…[ƒ‹j
-„    „¤„Ÿ„Ÿ implot/         # ImPlotƒ‰ƒCƒuƒ‰ƒŠiƒTƒuƒ‚ƒWƒ…[ƒ‹j
-„¥„Ÿ„Ÿ CSVNodeEditor.h     # ƒƒCƒ“ƒNƒ‰ƒXƒwƒbƒ_[
-„¥„Ÿ„Ÿ CSVNodeEditor.cpp   # ƒƒCƒ“ƒNƒ‰ƒXŽÀ‘•
-„¥„Ÿ„Ÿ NodeEditor.h        # ƒm[ƒhƒGƒfƒBƒ^ƒNƒ‰ƒX
-„¥„Ÿ„Ÿ NodeEditor.cpp      # ƒm[ƒhƒGƒfƒBƒ^ŽÀ‘•
-„¥„Ÿ„Ÿ CSVData.h           # CSVƒf[ƒ^ˆ—ƒNƒ‰ƒX
-„¥„Ÿ„Ÿ CSVData.cpp         # CSVƒf[ƒ^ˆ—ŽÀ‘•
-„¥„Ÿ„Ÿ NodeTypes.h         # ƒm[ƒhƒ^ƒCƒv’è‹`
-„¥„Ÿ„Ÿ NodeTypes.cpp       # ƒm[ƒhƒ^ƒCƒvŽÀ‘•
-„¥„Ÿ„Ÿ dllmain.cpp         # DLLƒGƒ“ƒgƒŠ[ƒ|ƒCƒ“ƒg
-„¥„Ÿ„Ÿ framework.h         # ‹¤’Êƒwƒbƒ_[
-„¤„Ÿ„Ÿ README.md           # ‚±‚Ìƒtƒ@ƒCƒ‹
+â”œâ”€â”€ external/
+â”‚   â”œâ”€â”€ imgui/          # ImGuiãƒ©ã‚¤ãƒ–ãƒ©ãƒªï¼ˆã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ï¼‰
+â”‚   â”œâ”€â”€ imnodes/        # ImNodesãƒ©ã‚¤ãƒ–ãƒ©ãƒªï¼ˆã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ï¼‰
+â”‚   â””â”€â”€ implot/         # ImPlotãƒ©ã‚¤ãƒ–ãƒ©ãƒªï¼ˆã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ï¼‰
+â”œâ”€â”€ CSVNodeEditor.h     # ãƒ¡ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹ãƒ˜ãƒƒãƒ€ãƒ¼
+â”œâ”€â”€ CSVNodeEditor.cpp   # ãƒ¡ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹å®Ÿè£…
+â”œâ”€â”€ NodeEditor.h        # ãƒŽãƒ¼ãƒ‰ã‚¨ãƒ‡ã‚£ã‚¿ã‚¯ãƒ©ã‚¹
+â”œâ”€â”€ NodeEditor.cpp      # ãƒŽãƒ¼ãƒ‰ã‚¨ãƒ‡ã‚£ã‚¿å®Ÿè£…
+â”œâ”€â”€ CSVData.h           # CSVãƒ‡ãƒ¼ã‚¿å‡¦ç†ã‚¯ãƒ©ã‚¹
+â”œâ”€â”€ CSVData.cpp         # CSVãƒ‡ãƒ¼ã‚¿å‡¦ç†å®Ÿè£…
+â”œâ”€â”€ NodeTypes.h         # ãƒŽãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ—å®šç¾©
+â”œâ”€â”€ NodeTypes.cpp       # ãƒŽãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ—å®Ÿè£…
+â”œâ”€â”€ dllmain.cpp         # DLLã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆ
+â”œâ”€â”€ framework.h         # å…±é€šãƒ˜ãƒƒãƒ€ãƒ¼
+â””â”€â”€ README.md           # ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«
 ```
 
-## ƒrƒ‹ƒh•û–@
+## ãƒ“ãƒ«ãƒ‰æ–¹æ³•
 
-### ‘O’ñðŒ
-- Visual Studio 2019ˆÈ~
+### å‰ææ¡ä»¶
+- Visual Studio 2019ä»¥é™
 - Windows 10/11
-- GitiƒTƒuƒ‚ƒWƒ…[ƒ‹ŠÇ——pj
+- Gitï¼ˆã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ç®¡ç†ç”¨ï¼‰
 
-### ƒrƒ‹ƒhŽè‡
+### ãƒ“ãƒ«ãƒ‰æ‰‹é †
 
-1. **ƒTƒuƒ‚ƒWƒ…[ƒ‹‚Ì‰Šú‰»**
+1. **ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆæœŸåŒ–**
    ```bash
    git submodule update --init --recursive
    ```
 
-2. **Visual Studio‚ÅƒvƒƒWƒFƒNƒg‚ðŠJ‚­**
-   - `CSVNodeEditor.vcxproj`‚ðŠJ‚­
-   - Ý’è‚ðRelease x64‚É•ÏX
+2. **Visual Studioã§ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã‚’é–‹ã**
+   - `CSVNodeEditor.vcxproj`ã‚’é–‹ã
+   - è¨­å®šã‚’Release x64ã«å¤‰æ›´
 
-3. **ƒrƒ‹ƒhŽÀs**
-   - ƒrƒ‹ƒh ¨ ƒ\ƒŠƒ…[ƒVƒ‡ƒ“‚Ìƒrƒ‹ƒh
+3. **ãƒ“ãƒ«ãƒ‰å®Ÿè¡Œ**
+   - ãƒ“ãƒ«ãƒ‰ â†’ ã‚½ãƒªãƒ¥ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ“ãƒ«ãƒ‰
 
-4. **ƒvƒ‰ƒOƒCƒ“‚Ì”z’u**
-   - ¶¬‚³‚ê‚½DLL‚ð`x64/Release/Plugins/CSVNodeEditor/`ƒtƒHƒ‹ƒ_‚É”z’u
+4. **ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®é…ç½®**
+   - ç”Ÿæˆã•ã‚ŒãŸDLLã‚’`x64/Release/Plugins/CSVNodeEditor/`ãƒ•ã‚©ãƒ«ãƒ€ã«é…ç½®
 
-## Žg—p•û–@
+## ä½¿ç”¨æ–¹æ³•
 
-### Šî–{“I‚Èƒ[ƒNƒtƒ[
+### åŸºæœ¬çš„ãªãƒ¯ãƒ¼ã‚¯ãƒ•ãƒ­ãƒ¼
 
-1. **CSVƒtƒ@ƒCƒ‹‚Ì“Ç‚Ýž‚Ý**
-   - ƒm[ƒhƒpƒŒƒbƒg‚©‚çuCSV“Ç‚Ýž‚Ývƒm[ƒh‚ð’Ç‰Á
-   - ƒtƒ@ƒCƒ‹ƒpƒX‚ðŽw’è‚µ‚Äƒf[ƒ^‚ð“Ç‚Ýž‚Ý
+1. **CSVãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿**
+   - ãƒŽãƒ¼ãƒ‰ãƒ‘ãƒ¬ãƒƒãƒˆã‹ã‚‰ã€ŒCSVèª­ã¿è¾¼ã¿ã€ãƒŽãƒ¼ãƒ‰ã‚’è¿½åŠ 
+   - ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¦ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã¿
 
-2. **ƒf[ƒ^ˆ—‚Ì’Ç‰Á**
-   - •K—v‚Èˆ—ƒm[ƒhiƒtƒBƒ‹ƒ^[Aƒ\[ƒg“™j‚ð’Ç‰Á
-   - ƒm[ƒhŠÔ‚ðÚ‘±‚µ‚Äˆ—ƒtƒ[‚ð\’z
+2. **ãƒ‡ãƒ¼ã‚¿å‡¦ç†ã®è¿½åŠ **
+   - å¿…è¦ãªå‡¦ç†ãƒŽãƒ¼ãƒ‰ï¼ˆãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã€ã‚½ãƒ¼ãƒˆç­‰ï¼‰ã‚’è¿½åŠ 
+   - ãƒŽãƒ¼ãƒ‰é–“ã‚’æŽ¥ç¶šã—ã¦å‡¦ç†ãƒ•ãƒ­ãƒ¼ã‚’æ§‹ç¯‰
 
-3. **Œ‹‰Ê‚Ìo—Í**
-   - uCSVo—Ívƒm[ƒh‚ð’Ç‰Á
-   - o—ÍƒpƒX‚ðŽw’è‚µ‚ÄŒ‹‰Ê‚ð•Û‘¶
+3. **çµæžœã®å‡ºåŠ›**
+   - ã€ŒCSVå‡ºåŠ›ã€ãƒŽãƒ¼ãƒ‰ã‚’è¿½åŠ 
+   - å‡ºåŠ›ãƒ‘ã‚¹ã‚’æŒ‡å®šã—ã¦çµæžœã‚’ä¿å­˜
 
-### ƒm[ƒh‚Ì‘€ì•û–@
+### ãƒŽãƒ¼ãƒ‰ã®æ“ä½œæ–¹æ³•
 
-- **ƒm[ƒh‚Ì’Ç‰Á**: ‰EƒNƒŠƒbƒNƒƒjƒ…[‚Ü‚½‚Íƒm[ƒhƒpƒŒƒbƒg‚©‚ç
-- **ƒm[ƒh‚ÌˆÚ“®**: ƒhƒ‰ƒbƒO&ƒhƒƒbƒv
-- **ƒm[ƒh‚ÌÚ‘±**: “ü—Í/o—Íƒsƒ“‚ðƒhƒ‰ƒbƒO‚µ‚ÄÚ‘±
-- **ƒm[ƒh‚Ìíœ**: ƒm[ƒh‚ð‘I‘ð‚µ‚ÄDeleteƒL[
+- **ãƒŽãƒ¼ãƒ‰ã®è¿½åŠ **: å³ã‚¯ãƒªãƒƒã‚¯ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã¾ãŸã¯ãƒŽãƒ¼ãƒ‰ãƒ‘ãƒ¬ãƒƒãƒˆã‹ã‚‰
+- **ãƒŽãƒ¼ãƒ‰ã®ç§»å‹•**: ãƒ‰ãƒ©ãƒƒã‚°&ãƒ‰ãƒ­ãƒƒãƒ—
+- **ãƒŽãƒ¼ãƒ‰ã®æŽ¥ç¶š**: å…¥åŠ›/å‡ºåŠ›ãƒ”ãƒ³ã‚’ãƒ‰ãƒ©ãƒƒã‚°ã—ã¦æŽ¥ç¶š
+- **ãƒŽãƒ¼ãƒ‰ã®å‰Šé™¤**: ãƒŽãƒ¼ãƒ‰ã‚’é¸æŠžã—ã¦Deleteã‚­ãƒ¼
 
-### ƒ^ƒuŠÇ—
+### ã‚¿ãƒ–ç®¡ç†
 
-- **V‹Kƒ^ƒu**: ƒ^ƒuƒo[‚Ìu+vƒ{ƒ^ƒ“‚Åì¬
-- **ƒ^ƒuØ‚è‘Ö‚¦**: ƒ^ƒu‚ðƒNƒŠƒbƒN‚µ‚ÄØ‚è‘Ö‚¦
-- **ƒ^ƒu•Â‚¶‚é**: ƒ^ƒu‚Ìu~vƒ{ƒ^ƒ“‚Å•Â‚¶‚é
+- **æ–°è¦ã‚¿ãƒ–**: ã‚¿ãƒ–ãƒãƒ¼ã®ã€Œ+ã€ãƒœã‚¿ãƒ³ã§ä½œæˆ
+- **ã‚¿ãƒ–åˆ‡ã‚Šæ›¿ãˆ**: ã‚¿ãƒ–ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦åˆ‡ã‚Šæ›¿ãˆ
+- **ã‚¿ãƒ–é–‰ã˜ã‚‹**: ã‚¿ãƒ–ã®ã€ŒÃ—ã€ãƒœã‚¿ãƒ³ã§é–‰ã˜ã‚‹
 
-## ‹ZpŽd—l
+## æŠ€è¡“ä»•æ§˜
 
-### Žg—pƒ‰ƒCƒuƒ‰ƒŠ
+### ä½¿ç”¨ãƒ©ã‚¤ãƒ–ãƒ©ãƒª
 - **ImGui**: Immediate Mode GUI
-- **ImNodes**: ƒm[ƒhƒGƒfƒBƒ^‹@”\
-- **ImPlot**: ƒf[ƒ^‰ÂŽ‹‰»
+- **ImNodes**: ãƒŽãƒ¼ãƒ‰ã‚¨ãƒ‡ã‚£ã‚¿æ©Ÿèƒ½
+- **ImPlot**: ãƒ‡ãƒ¼ã‚¿å¯è¦–åŒ–
 
-### ‘Î‰žƒtƒ@ƒCƒ‹Œ`Ž®
-- **“ü—Í**: CSViƒJƒ“ƒ}‹æØ‚èj
-- **o—Í**: CSViƒJƒ“ƒ}‹æØ‚èj
+### å¯¾å¿œãƒ•ã‚¡ã‚¤ãƒ«å½¢å¼
+- **å…¥åŠ›**: CSVï¼ˆã‚«ãƒ³ãƒžåŒºåˆ‡ã‚Šï¼‰
+- **å‡ºåŠ›**: CSVï¼ˆã‚«ãƒ³ãƒžåŒºåˆ‡ã‚Šï¼‰
 
-### ƒpƒtƒH[ƒ}ƒ“ƒX
-- 10–œs’ö“x‚ÌCSVƒf[ƒ^‚ðˆ—‰Â”\
-- ƒƒ‚ƒŠŒø—¦“I‚Èƒf[ƒ^ŠÇ—
+### ãƒ‘ãƒ•ã‚©ãƒ¼ãƒžãƒ³ã‚¹
+- 10ä¸‡è¡Œç¨‹åº¦ã®CSVãƒ‡ãƒ¼ã‚¿ã‚’å‡¦ç†å¯èƒ½
+- ãƒ¡ãƒ¢ãƒªåŠ¹çŽ‡çš„ãªãƒ‡ãƒ¼ã‚¿ç®¡ç†
 
-## ¡Œã‚ÌŠg’£—\’è
+## ä»Šå¾Œã®æ‹¡å¼µäºˆå®š
 
-- **’Ç‰Áƒm[ƒhƒ^ƒCƒv**
-  - ƒf[ƒ^•ÏŠ·ƒm[ƒh
-  - “Œv•ªÍƒm[ƒh
-  - ‰ÂŽ‹‰»ƒm[ƒh
+- **è¿½åŠ ãƒŽãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ—**
+  - ãƒ‡ãƒ¼ã‚¿å¤‰æ›ãƒŽãƒ¼ãƒ‰
+  - çµ±è¨ˆåˆ†æžãƒŽãƒ¼ãƒ‰
+  - å¯è¦–åŒ–ãƒŽãƒ¼ãƒ‰
 
-- **‹@”\Šg’£**
-  - ƒvƒƒWƒFƒNƒgƒtƒ@ƒCƒ‹‚Ì•Û‘¶/“Ç‚Ýž‚Ý
-  - Undo/Redo‹@”\
-  - ƒoƒbƒ`ˆ—‹@”\
+- **æ©Ÿèƒ½æ‹¡å¼µ**
+  - ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆãƒ•ã‚¡ã‚¤ãƒ«ã®ä¿å­˜/èª­ã¿è¾¼ã¿
+  - Undo/Redoæ©Ÿèƒ½
+  - ãƒãƒƒãƒå‡¦ç†æ©Ÿèƒ½
 
-- **ƒtƒ@ƒCƒ‹Œ`Ž®‘Î‰ž**
-  - Excelƒtƒ@ƒCƒ‹‘Î‰ž
-  - TSVƒtƒ@ƒCƒ‹‘Î‰ž
-  - JSONƒtƒ@ƒCƒ‹‘Î‰ž
+- **ãƒ•ã‚¡ã‚¤ãƒ«å½¢å¼å¯¾å¿œ**
+  - Excelãƒ•ã‚¡ã‚¤ãƒ«å¯¾å¿œ
+  - TSVãƒ•ã‚¡ã‚¤ãƒ«å¯¾å¿œ
+  - JSONãƒ•ã‚¡ã‚¤ãƒ«å¯¾å¿œ
 
-## ƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO
+## ãƒˆãƒ©ãƒ–ãƒ«ã‚·ãƒ¥ãƒ¼ãƒ†ã‚£ãƒ³ã‚°
 
-### ‚æ‚­‚ ‚é–â‘è
+### ã‚ˆãã‚ã‚‹å•é¡Œ
 
-1. **ƒvƒ‰ƒOƒCƒ“‚ª“Ç‚Ýž‚Ü‚ê‚È‚¢**
-   - DLL‚ª³‚µ‚¢ƒtƒHƒ‹ƒ_‚É”z’u‚³‚ê‚Ä‚¢‚é‚©Šm”F
-   - ˆË‘¶ƒ‰ƒCƒuƒ‰ƒŠ‚ª³‚µ‚­ƒŠƒ“ƒN‚³‚ê‚Ä‚¢‚é‚©Šm”F
+1. **ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãŒèª­ã¿è¾¼ã¾ã‚Œãªã„**
+   - DLLãŒæ­£ã—ã„ãƒ•ã‚©ãƒ«ãƒ€ã«é…ç½®ã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèª
+   - ä¾å­˜ãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒæ­£ã—ããƒªãƒ³ã‚¯ã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèª
 
-2. **CSVƒtƒ@ƒCƒ‹‚ª“Ç‚Ýž‚ß‚È‚¢**
-   - ƒtƒ@ƒCƒ‹ƒpƒX‚ª³‚µ‚¢‚©Šm”F
-   - ƒtƒ@ƒCƒ‹‚ª‘¼‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÅŠJ‚©‚ê‚Ä‚¢‚È‚¢‚©Šm”F
+2. **CSVãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã‚ãªã„**
+   - ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ãŒæ­£ã—ã„ã‹ç¢ºèª
+   - ãƒ•ã‚¡ã‚¤ãƒ«ãŒä»–ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§é–‹ã‹ã‚Œã¦ã„ãªã„ã‹ç¢ºèª
 
-3. **ƒm[ƒh‚ª•\Ž¦‚³‚ê‚È‚¢**
-   - ImNodesƒ‰ƒCƒuƒ‰ƒŠ‚ª³‚µ‚­‰Šú‰»‚³‚ê‚Ä‚¢‚é‚©Šm”F
+3. **ãƒŽãƒ¼ãƒ‰ãŒè¡¨ç¤ºã•ã‚Œãªã„**
+   - ImNodesãƒ©ã‚¤ãƒ–ãƒ©ãƒªãŒæ­£ã—ãåˆæœŸåŒ–ã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèª
 
-## ƒ‰ƒCƒZƒ“ƒX
+## ãƒ©ã‚¤ã‚»ãƒ³ã‚¹
 
-‚±‚Ìƒvƒ‰ƒOƒCƒ“‚Í“KØ‚Èƒ‰ƒCƒZƒ“ƒX‚Ì‰º‚Å’ñ‹Ÿ‚³‚ê‚Ä‚¢‚Ü‚·BŽg—p‚·‚éŠO•”ƒ‰ƒCƒuƒ‰ƒŠ‚Ìƒ‰ƒCƒZƒ“ƒX‚à…Žç‚µ‚Ä‚­‚¾‚³‚¢B
+ã“ã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã¯é©åˆ‡ãªãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã®ä¸‹ã§æä¾›ã•ã‚Œã¦ã„ã¾ã™ã€‚ä½¿ç”¨ã™ã‚‹å¤–éƒ¨ãƒ©ã‚¤ãƒ–ãƒ©ãƒªã®ãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã‚‚éµå®ˆã—ã¦ãã ã•ã„ã€‚
 
-## vŒ£
+## è²¢çŒ®
 
-ƒvƒƒWƒFƒNƒg‚Ö‚ÌvŒ£‚ðŠ½Œ}‚µ‚Ü‚·Bƒvƒ‹ƒŠƒNƒGƒXƒg‚âƒCƒVƒ…[‚Ì•ñ‚ð‚¨‹CŒy‚É‚¨Šè‚¢‚µ‚Ü‚·B
+ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¸ã®è²¢çŒ®ã‚’æ­“è¿Žã—ã¾ã™ã€‚ãƒ—ãƒ«ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚„ã‚¤ã‚·ãƒ¥ãƒ¼ã®å ±å‘Šã‚’ãŠæ°—è»½ã«ãŠé¡˜ã„ã—ã¾ã™ã€‚
 
-## ŽQlŽ‘—¿
+## å‚è€ƒè³‡æ–™
 
 - [ImGui Documentation](https://github.com/ocornut/imgui)
 - [ImNodes Documentation](https://github.com/Nelarius/imnodes)
 - [ImPlot Documentation](https://github.com/epezent/implot)
-- [NSys ƒƒCƒ“ƒvƒƒWƒFƒNƒg](../README.md)
+- [NSys ãƒ¡ã‚¤ãƒ³ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ](../README.md)

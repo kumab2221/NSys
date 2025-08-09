@@ -21,19 +21,19 @@
 #pragma comment(lib, "dxguid.lib")
 #endif
 
-// ƒƒCƒh•¶š—ñ‚ğƒ}ƒ‹ƒ`ƒoƒCƒg•¶š—ñ‚É•ÏŠ·‚·‚éŠÖ”
+// ãƒ¯ã‚¤ãƒ‰æ–‡å­—åˆ—ã‚’ãƒãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹é–¢æ•°
 std::string WStringToString(const std::wstring& wstr) {
     if (wstr.empty()) {
         return std::string();
     }
 
-    // •K—v‚Èƒoƒbƒtƒ@ƒTƒCƒY‚ğŒvZ
+    // å¿…è¦ãªãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã‚’è¨ˆç®—
     int sizeNeeded = WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), (int)wstr.size(), nullptr, 0, nullptr, nullptr);
     if (sizeNeeded == 0) {
         throw std::runtime_error("Failed to convert wide string to string");
     }
 
-    // •ÏŠ·Œã‚Ìƒoƒbƒtƒ@‚ğŠm•Û
+    // å¤‰æ›å¾Œã®ãƒãƒƒãƒ•ã‚¡ã‚’ç¢ºä¿
     std::string result(sizeNeeded, 0);
     WideCharToMultiByte(CP_UTF8, 0, wstr.c_str(), (int)wstr.size(), &result[0], sizeNeeded, nullptr, nullptr);
 
@@ -42,15 +42,15 @@ std::string WStringToString(const std::wstring& wstr) {
 
 using PluginFunc = void (*)(ImGuiContext*, const void*, void*);
 
-// ƒvƒ‰ƒOƒCƒ“î•ñ
+// ãƒ—ãƒ©ã‚°ã‚¤ãƒ³æƒ…å ±
 struct Plugin {
     HMODULE handle;
     PluginFunc runFunc;
     std::wstring name;
-    bool visible; // •\¦ó‘Ô‚ğŠÇ—
+    bool visible; // è¡¨ç¤ºçŠ¶æ…‹ã‚’ç®¡ç†
 };
 
-static std::vector<Plugin> plugins; // ƒ[ƒh‚³‚ê‚½ƒvƒ‰ƒOƒCƒ“ƒŠƒXƒg
+static std::vector<Plugin> plugins; // ãƒ­ãƒ¼ãƒ‰ã•ã‚ŒãŸãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãƒªã‚¹ãƒˆ
 
 std::wstring GetExecutableDirectory() {
     wchar_t buffer[MAX_PATH];
@@ -63,20 +63,20 @@ void LoadPlugins(const std::wstring& pluginDir) {
     try {
         for (const auto& entry : std::filesystem::directory_iterator(pluginDir)) {
             if (entry.is_directory()) {
-                // ƒvƒ‰ƒOƒCƒ“ƒtƒHƒ‹ƒ_–¼‚ğæ“¾
+                // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãƒ•ã‚©ãƒ«ãƒ€åã‚’å–å¾—
                 auto pluginFolder = entry.path();
                 auto pluginName = pluginFolder.filename().wstring();
 
-                // DLL‚ÌƒpƒX‚ğì¬
+                // DLLã®ãƒ‘ã‚¹ã‚’ä½œæˆ
                 auto dllPath = pluginFolder / (pluginName + L".dll");
 
                 if (std::filesystem::exists(dllPath)) {
-                    // DLL‚ğƒ[ƒh
+                    // DLLã‚’ãƒ­ãƒ¼ãƒ‰
                     HMODULE hDll = LoadLibrary(dllPath.c_str());
                     if (hDll) {
                         auto run = (PluginFunc)GetProcAddress(hDll, "run");
                         if (run) {
-                            // ƒvƒ‰ƒOƒCƒ“î•ñ‚ğ’Ç‰Á
+                            // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³æƒ…å ±ã‚’è¿½åŠ 
                             plugins.push_back({ hDll, run, pluginName});
                             std::wcerr << L"Loaded plugin: " << pluginName << std::endl;
                         }
@@ -111,10 +111,10 @@ void ShowMainMenuBar() {
     if (ImGui::BeginMainMenuBar()) {
         if (ImGui::BeginMenu("View")) {
             for (auto& plugin : plugins) {
-                // ƒƒCƒh•¶š—ñ‚ğƒ}ƒ‹ƒ`ƒoƒCƒg•¶š—ñ‚É•ÏŠ·
+                // ãƒ¯ã‚¤ãƒ‰æ–‡å­—åˆ—ã‚’ãƒãƒ«ãƒãƒã‚¤ãƒˆæ–‡å­—åˆ—ã«å¤‰æ›
                 std::string pluginName = WStringToString(plugin.name);
                 if (ImGui::MenuItem(pluginName.c_str(), nullptr, &plugin.visible)) {
-                    // ƒ`ƒFƒbƒNó‘Ô‚ªØ‚è‘Ö‚í‚Á‚½ê‡‚Ìˆ—
+                    // ãƒã‚§ãƒƒã‚¯çŠ¶æ…‹ãŒåˆ‡ã‚Šæ›¿ã‚ã£ãŸå ´åˆã®å‡¦ç†
                     std::wcout << L"Plugin visibility toggled: " << plugin.name
                         << L" -> " << (plugin.visible ? L"Visible" : L"Hidden") << std::endl;
                 }
@@ -128,7 +128,7 @@ void ShowMainMenuBar() {
 void RenderPlugins() {
     for (const auto& plugin : plugins) {
         if (plugin.visible && plugin.runFunc) {
-            // ƒvƒ‰ƒOƒCƒ“‚Ì•\¦‚ğÀs
+            // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®è¡¨ç¤ºã‚’å®Ÿè¡Œ
             plugin.runFunc(ImGui::GetCurrentContext(), nullptr, nullptr);
         }
     }
@@ -244,7 +244,7 @@ int main(int argc, char* argv[])
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    ImGuiContext* shared_context = ImGui::GetCurrentContext();  // Œ»İ‚ÌƒRƒ“ƒeƒLƒXƒg‚ğæ“¾
+    ImGuiContext* shared_context = ImGui::GetCurrentContext();  // ç¾åœ¨ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’å–å¾—
 
     ImGuiIO& io = ImGui::GetIO(); (void)io;
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;     // Enable Keyboard Controls
@@ -277,7 +277,7 @@ int main(int argc, char* argv[])
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
-    // PluginsƒtƒHƒ‹ƒ_“à‚Ìƒvƒ‰ƒOƒCƒ“‚ğƒ[ƒh
+    // Pluginsãƒ•ã‚©ãƒ«ãƒ€å†…ã®ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’ãƒ­ãƒ¼ãƒ‰
     std::wstring pluginDir = GetExecutableDirectory() + L"\\Plugins";
     LoadPlugins(pluginDir);
 
@@ -323,8 +323,8 @@ int main(int argc, char* argv[])
             ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
             ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
             
-            // ƒƒjƒ…[ƒo[‚Ì‚‚³‚ğæ“¾‚µADocking Space‚ÌˆÊ’u‚ğ’²®
-            float menu_bar_height = ImGui::GetFrameHeight(); // ƒƒjƒ…[ƒo[‚Ì‚‚³
+            // ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼ã®é«˜ã•ã‚’å–å¾—ã—ã€Docking Spaceã®ä½ç½®ã‚’èª¿æ•´
+            float menu_bar_height = ImGui::GetFrameHeight(); // ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼ã®é«˜ã•
             ImGui::SetNextWindowPos(ImVec2(viewport->Pos.x, viewport->Pos.y + menu_bar_height));
             ImGui::SetNextWindowSize(ImVec2(viewport->Size.x, viewport->Size.y - menu_bar_height));
 
@@ -342,7 +342,7 @@ int main(int argc, char* argv[])
         
         }
         
-        // ƒvƒ‰ƒOƒCƒ“‚²‚Æ‚Ì•\¦ˆ—
+        // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã”ã¨ã®è¡¨ç¤ºå‡¦ç†
         RenderPlugins();
 
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
@@ -414,7 +414,7 @@ int main(int argc, char* argv[])
 
     WaitForLastSubmittedFrame();
 
-    // ƒvƒ‰ƒOƒCƒ“‚ÌƒNƒŠ[ƒ“ƒAƒbƒv
+    // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ã‚¯ãƒªãƒ¼ãƒ³ã‚¢ãƒƒãƒ—
     UnloadPlugins(plugins);
 
     // Cleanup

@@ -1,181 +1,181 @@
 # NSys
 
-NSys‚ÍAImGui‚ðŽg—p‚µ‚½C++ƒAƒvƒŠƒP[ƒVƒ‡ƒ“ŠJ”­ƒvƒƒWƒFƒNƒg‚Å‚·B
+NSysã¯ã€ImGuiã‚’ä½¿ç”¨ã—ãŸC++ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³é–‹ç™ºãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã€‚
 
-## ƒvƒƒWƒFƒNƒg\¬
+## ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆæ§‹æˆ
 
 ```
 NSys/
-„¥„Ÿ„Ÿ NSys/                    # ƒƒCƒ“ƒAƒvƒŠƒP[ƒVƒ‡ƒ“
-„    „¥„Ÿ„Ÿ external/imgui/      # ImGuiƒ‰ƒCƒuƒ‰ƒŠiƒTƒuƒ‚ƒWƒ…[ƒ‹j
-„    „¥„Ÿ„Ÿ ImGuiWindowManager.cpp
-„    „¥„Ÿ„Ÿ ImGuiWindowManager.h
-„    „¤„Ÿ„Ÿ main.cpp
-„¥„Ÿ„Ÿ PluginTest/              # ƒvƒ‰ƒOƒCƒ“ƒeƒXƒg—pƒvƒƒWƒFƒNƒg
-„    „¥„Ÿ„Ÿ external/imgui/      # ImGuiƒ‰ƒCƒuƒ‰ƒŠiƒTƒuƒ‚ƒWƒ…[ƒ‹j
-„    „¥„Ÿ„Ÿ dllmain.cpp
-„    „¥„Ÿ„Ÿ framework.h
-„    „¤„Ÿ„Ÿ README.md
-„¥„Ÿ„Ÿ CSVNodeEditor/           # ƒm[ƒhƒvƒƒOƒ‰ƒ~ƒ“ƒOŒ^CSV‰ðÍƒc[ƒ‹
-„    „¥„Ÿ„Ÿ external/            # ŠO•”ƒ‰ƒCƒuƒ‰ƒŠiƒTƒuƒ‚ƒWƒ…[ƒ‹j
-„    „    „¥„Ÿ„Ÿ imgui/          # ImGuiƒ‰ƒCƒuƒ‰ƒŠ
-„    „    „¥„Ÿ„Ÿ imnodes/        # ImNodesƒ‰ƒCƒuƒ‰ƒŠ
-„    „    „¤„Ÿ„Ÿ implot/         # ImPlotƒ‰ƒCƒuƒ‰ƒŠ
-„    „¥„Ÿ„Ÿ CSVNodeEditor.h     # ƒƒCƒ“ƒNƒ‰ƒX
-„    „¥„Ÿ„Ÿ CSVNodeEditor.cpp   # ƒƒCƒ“ŽÀ‘•
-„    „¥„Ÿ„Ÿ NodeEditor.h        # ƒm[ƒhƒGƒfƒBƒ^
-„    „¥„Ÿ„Ÿ NodeEditor.cpp      # ƒm[ƒhƒGƒfƒBƒ^ŽÀ‘•
-„    „¥„Ÿ„Ÿ CSVData.h           # CSVƒf[ƒ^ˆ—
-„    „¥„Ÿ„Ÿ CSVData.cpp         # CSVƒf[ƒ^ˆ—ŽÀ‘•
-„    „¥„Ÿ„Ÿ NodeTypes.h         # ƒm[ƒhƒ^ƒCƒv’è‹`
-„    „¥„Ÿ„Ÿ NodeTypes.cpp       # ƒm[ƒhƒ^ƒCƒvŽÀ‘•
-„    „¥„Ÿ„Ÿ dllmain.cpp         # DLLƒGƒ“ƒgƒŠ[ƒ|ƒCƒ“ƒg
-„    „¥„Ÿ„Ÿ framework.h         # ‹¤’Êƒwƒbƒ_[
-„    „¤„Ÿ„Ÿ README.md           # ƒvƒ‰ƒOƒCƒ“à–¾
-„¤„Ÿ„Ÿ README.md
+â”œâ”€â”€ NSys/                    # ãƒ¡ã‚¤ãƒ³ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³
+â”‚   â”œâ”€â”€ external/imgui/      # ImGuiãƒ©ã‚¤ãƒ–ãƒ©ãƒªï¼ˆã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ï¼‰
+â”‚   â”œâ”€â”€ ImGuiWindowManager.cpp
+â”‚   â”œâ”€â”€ ImGuiWindowManager.h
+â”‚   â””â”€â”€ main.cpp
+â”œâ”€â”€ PluginTest/              # ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãƒ†ã‚¹ãƒˆç”¨ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ
+â”‚   â”œâ”€â”€ external/imgui/      # ImGuiãƒ©ã‚¤ãƒ–ãƒ©ãƒªï¼ˆã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ï¼‰
+â”‚   â”œâ”€â”€ dllmain.cpp
+â”‚   â”œâ”€â”€ framework.h
+â”‚   â””â”€â”€ README.md
+â”œâ”€â”€ CSVNodeEditor/           # ãƒŽãƒ¼ãƒ‰ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°åž‹CSVè§£æžãƒ„ãƒ¼ãƒ«
+â”‚   â”œâ”€â”€ external/            # å¤–éƒ¨ãƒ©ã‚¤ãƒ–ãƒ©ãƒªï¼ˆã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ï¼‰
+â”‚   â”‚   â”œâ”€â”€ imgui/          # ImGuiãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+â”‚   â”‚   â”œâ”€â”€ imnodes/        # ImNodesãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+â”‚   â”‚   â””â”€â”€ implot/         # ImPlotãƒ©ã‚¤ãƒ–ãƒ©ãƒª
+â”‚   â”œâ”€â”€ CSVNodeEditor.h     # ãƒ¡ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹
+â”‚   â”œâ”€â”€ CSVNodeEditor.cpp   # ãƒ¡ã‚¤ãƒ³å®Ÿè£…
+â”‚   â”œâ”€â”€ NodeEditor.h        # ãƒŽãƒ¼ãƒ‰ã‚¨ãƒ‡ã‚£ã‚¿
+â”‚   â”œâ”€â”€ NodeEditor.cpp      # ãƒŽãƒ¼ãƒ‰ã‚¨ãƒ‡ã‚£ã‚¿å®Ÿè£…
+â”‚   â”œâ”€â”€ CSVData.h           # CSVãƒ‡ãƒ¼ã‚¿å‡¦ç†
+â”‚   â”œâ”€â”€ CSVData.cpp         # CSVãƒ‡ãƒ¼ã‚¿å‡¦ç†å®Ÿè£…
+â”‚   â”œâ”€â”€ NodeTypes.h         # ãƒŽãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ—å®šç¾©
+â”‚   â”œâ”€â”€ NodeTypes.cpp       # ãƒŽãƒ¼ãƒ‰ã‚¿ã‚¤ãƒ—å®Ÿè£…
+â”‚   â”œâ”€â”€ dllmain.cpp         # DLLã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆ
+â”‚   â”œâ”€â”€ framework.h         # å…±é€šãƒ˜ãƒƒãƒ€ãƒ¼
+â”‚   â””â”€â”€ README.md           # ãƒ—ãƒ©ã‚°ã‚¤ãƒ³èª¬æ˜Ž
+â””â”€â”€ README.md
 ```
 
-## ‘O’ñðŒ
+## å‰ææ¡ä»¶
 
-- Visual Studio 2019ˆÈ~
+- Visual Studio 2019ä»¥é™
 - Git
-- CMakei•K—v‚É‰ž‚¶‚Äj
+- CMakeï¼ˆå¿…è¦ã«å¿œã˜ã¦ï¼‰
 
-## ƒvƒ‰ƒOƒCƒ“
+## ãƒ—ãƒ©ã‚°ã‚¤ãƒ³
 
 ### PluginTest
-Šî–{“I‚Èƒvƒ‰ƒOƒCƒ“‹@”\‚ÌƒeƒXƒg—pƒvƒƒWƒFƒNƒg‚Å‚·BImGuiƒRƒ“ƒeƒLƒXƒg‚ð‹¤—L‚µ‚ÄƒƒCƒ“ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Æ˜AŒg‚µ‚Ü‚·B
+åŸºæœ¬çš„ãªãƒ—ãƒ©ã‚°ã‚¤ãƒ³æ©Ÿèƒ½ã®ãƒ†ã‚¹ãƒˆç”¨ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã€‚ImGuiã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’å…±æœ‰ã—ã¦ãƒ¡ã‚¤ãƒ³ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã¨é€£æºã—ã¾ã™ã€‚
 
 ### CSVNodeEditor
-ƒm[ƒhƒvƒƒOƒ‰ƒ~ƒ“ƒOŒ^CSV‰ðÍƒc[ƒ‹‚Å‚·BˆÈ‰º‚Ì‹@”\‚ð’ñ‹Ÿ‚µ‚Ü‚·F
+ãƒŽãƒ¼ãƒ‰ãƒ—ãƒ­ã‚°ãƒ©ãƒŸãƒ³ã‚°åž‹CSVè§£æžãƒ„ãƒ¼ãƒ«ã§ã™ã€‚ä»¥ä¸‹ã®æ©Ÿèƒ½ã‚’æä¾›ã—ã¾ã™ï¼š
 
-- **ƒm[ƒhƒx[ƒX‚Ìƒf[ƒ^ˆ—ƒtƒ[\’z**
-- **CSVƒtƒ@ƒCƒ‹‚Ì“Ç‚Ýž‚ÝE•Û‘¶**
-- **•¡”ƒ^ƒu‚Å‚Ì•À—ñ•ÒW**
-- **DockingƒEƒBƒ“ƒhƒE‘Î‰ž**
-- **ŠeŽíƒf[ƒ^ˆ—ƒm[ƒh**iƒtƒBƒ‹ƒ^[Aƒ\[ƒgAWŒvAŒ‹‡“™j
+- **ãƒŽãƒ¼ãƒ‰ãƒ™ãƒ¼ã‚¹ã®ãƒ‡ãƒ¼ã‚¿å‡¦ç†ãƒ•ãƒ­ãƒ¼æ§‹ç¯‰**
+- **CSVãƒ•ã‚¡ã‚¤ãƒ«ã®èª­ã¿è¾¼ã¿ãƒ»ä¿å­˜**
+- **è¤‡æ•°ã‚¿ãƒ–ã§ã®ä¸¦åˆ—ç·¨é›†**
+- **Dockingã‚¦ã‚£ãƒ³ãƒ‰ã‚¦å¯¾å¿œ**
+- **å„ç¨®ãƒ‡ãƒ¼ã‚¿å‡¦ç†ãƒŽãƒ¼ãƒ‰**ï¼ˆãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ã€ã‚½ãƒ¼ãƒˆã€é›†è¨ˆã€çµåˆç­‰ï¼‰
 
-Ú×‚Í [CSVNodeEditor/README.md](CSVNodeEditor/README.md) ‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+è©³ç´°ã¯ [CSVNodeEditor/README.md](CSVNodeEditor/README.md) ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
-## ƒZƒbƒgƒAƒbƒvŽè‡
+## ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—æ‰‹é †
 
-### 1. ƒŠƒ|ƒWƒgƒŠ‚ÌƒNƒ[ƒ“
+### 1. ãƒªãƒã‚¸ãƒˆãƒªã®ã‚¯ãƒ­ãƒ¼ãƒ³
 
 ```bash
 git clone <repository-url>
 cd NSys
 ```
 
-### 2. ƒTƒuƒ‚ƒWƒ…[ƒ‹‚Ì‰Šú‰»
+### 2. ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆæœŸåŒ–
 
-**d—v**: ‚±‚ÌƒvƒƒWƒFƒNƒg‚ÍImGuiƒ‰ƒCƒuƒ‰ƒŠ‚ðƒTƒuƒ‚ƒWƒ…[ƒ‹‚Æ‚µ‚ÄŽg—p‚µ‚Ä‚¢‚Ü‚·BˆÈ‰º‚ÌŽè‡‚Å³‚µ‚­‰Šú‰»‚µ‚Ä‚­‚¾‚³‚¢B
+**é‡è¦**: ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ImGuiãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã¨ã—ã¦ä½¿ç”¨ã—ã¦ã„ã¾ã™ã€‚ä»¥ä¸‹ã®æ‰‹é †ã§æ­£ã—ãåˆæœŸåŒ–ã—ã¦ãã ã•ã„ã€‚
 
-#### •û–@1: „§•û–@iV‹KƒNƒ[ƒ“Žžj
+#### æ–¹æ³•1: æŽ¨å¥¨æ–¹æ³•ï¼ˆæ–°è¦ã‚¯ãƒ­ãƒ¼ãƒ³æ™‚ï¼‰
 
 ```bash
-# ƒŠƒ|ƒWƒgƒŠ‚ðƒNƒ[ƒ“‚·‚éÛ‚ÉƒTƒuƒ‚ƒWƒ…[ƒ‹‚à“¯Žž‚É‰Šú‰»
+# ãƒªãƒã‚¸ãƒˆãƒªã‚’ã‚¯ãƒ­ãƒ¼ãƒ³ã™ã‚‹éš›ã«ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚‚åŒæ™‚ã«åˆæœŸåŒ–
 git clone --recursive <repository-url>
 cd NSys
 ```
 
-#### •û–@2: Šù‘¶‚ÌƒŠƒ|ƒWƒgƒŠ‚ÅƒTƒuƒ‚ƒWƒ…[ƒ‹‚ð‰Šú‰»
+#### æ–¹æ³•2: æ—¢å­˜ã®ãƒªãƒã‚¸ãƒˆãƒªã§ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’åˆæœŸåŒ–
 
 ```bash
-# ƒTƒuƒ‚ƒWƒ…[ƒ‹‚Ì‰Šú‰»‚ÆXV
+# ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆæœŸåŒ–ã¨æ›´æ–°
 git submodule update --init --recursive
 ```
 
-#### •û–@3: ƒTƒuƒ‚ƒWƒ…[ƒ‹‚ª³‚µ‚­“®ì‚µ‚È‚¢ê‡‚Ì‘Îˆ–@
+#### æ–¹æ³•3: ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒæ­£ã—ãå‹•ä½œã—ãªã„å ´åˆã®å¯¾å‡¦æ³•
 
-‚à‚µã‹L‚Ì•û–@‚ÅƒTƒuƒ‚ƒWƒ…[ƒ‹‚ª³‚µ‚­‰Šú‰»‚³‚ê‚È‚¢ê‡i‹ó‚ÌƒfƒBƒŒƒNƒgƒŠ‚ªì¬‚³‚ê‚éê‡jF
+ã‚‚ã—ä¸Šè¨˜ã®æ–¹æ³•ã§ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒæ­£ã—ãåˆæœŸåŒ–ã•ã‚Œãªã„å ´åˆï¼ˆç©ºã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒä½œæˆã•ã‚Œã‚‹å ´åˆï¼‰ï¼š
 
 ```bash
-# 1. ‹ó‚ÌimguiƒfƒBƒŒƒNƒgƒŠ‚ðíœ
+# 1. ç©ºã®imguiãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’å‰Šé™¤
 Remove-Item -Recurse -Force "NSys/external/imgui" -ErrorAction SilentlyContinue
 Remove-Item -Recurse -Force "PluginTest/external/imgui" -ErrorAction SilentlyContinue
 
-# 2. ƒTƒuƒ‚ƒWƒ…[ƒ‹‚ðÄ’Ç‰Á
+# 2. ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’å†è¿½åŠ 
 git submodule add -b docking https://github.com/ocornut/imgui.git NSys/external/imgui
 git submodule add -b docking https://github.com/ocornut/imgui.git PluginTest/external/imgui
 
-# 3. ƒTƒuƒ‚ƒWƒ…[ƒ‹‚Ìó‘Ô‚ðŠm”F
+# 3. ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’ç¢ºèª
 git submodule status
 ```
 
-### 3. Ž©“®ƒZƒbƒgƒAƒbƒvi„§j
+### 3. è‡ªå‹•ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ï¼ˆæŽ¨å¥¨ï¼‰
 
-ƒvƒƒWƒFƒNƒg‚ÌƒZƒbƒgƒAƒbƒv‚ðŽ©“®‰»‚·‚éƒXƒNƒŠƒvƒg‚ð’ñ‹Ÿ‚µ‚Ä‚¢‚Ü‚·F
+ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ã‚’è‡ªå‹•åŒ–ã™ã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’æä¾›ã—ã¦ã„ã¾ã™ï¼š
 
-#### Windows—pƒoƒbƒ`ƒXƒNƒŠƒvƒg
+#### Windowsç”¨ãƒãƒƒãƒã‚¹ã‚¯ãƒªãƒ—ãƒˆ
 ```cmd
 setup.bat
 ```
 
-#### PowerShellƒXƒNƒŠƒvƒgi‚æ‚èÚ×‚ÈƒƒOo—Íj
+#### PowerShellã‚¹ã‚¯ãƒªãƒ—ãƒˆï¼ˆã‚ˆã‚Šè©³ç´°ãªãƒ­ã‚°å‡ºåŠ›ï¼‰
 ```powershell
 .\setup.ps1
 ```
 
-‚±‚ê‚ç‚ÌƒXƒNƒŠƒvƒg‚ÍˆÈ‰º‚ðŽ©“®“I‚ÉŽÀs‚µ‚Ü‚·F
-- Git‚ÌƒCƒ“ƒXƒg[ƒ‹Šm”F
-- ƒTƒuƒ‚ƒWƒ…[ƒ‹‚Ì‰Šú‰»
-- ImGuiƒtƒ@ƒCƒ‹‚Ì‘¶ÝŠm”F
-- –â‘è‚ª‚ ‚éê‡‚ÌŽ©“®C•œ
+ã“ã‚Œã‚‰ã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã¯ä»¥ä¸‹ã‚’è‡ªå‹•çš„ã«å®Ÿè¡Œã—ã¾ã™ï¼š
+- Gitã®ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ç¢ºèª
+- ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆæœŸåŒ–
+- ImGuiãƒ•ã‚¡ã‚¤ãƒ«ã®å­˜åœ¨ç¢ºèª
+- å•é¡ŒãŒã‚ã‚‹å ´åˆã®è‡ªå‹•ä¿®å¾©
 
-### 4. ƒvƒƒWƒFƒNƒg‚Ìƒrƒ‹ƒh
+### 4. ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ãƒ“ãƒ«ãƒ‰
 
-1. `NSys.sln` ‚ðVisual Studio‚ÅŠJ‚­
-2. •K—v‚ÈˆË‘¶ŠÖŒW‚ª‰ðŒˆ‚³‚ê‚Ä‚¢‚é‚±‚Æ‚ðŠm”F
-3. ƒrƒ‹ƒhÝ’è‚ð‘I‘ðiDebug/Releasej
-4. ƒrƒ‹ƒh‚ðŽÀs
+1. `NSys.sln` ã‚’Visual Studioã§é–‹ã
+2. å¿…è¦ãªä¾å­˜é–¢ä¿‚ãŒè§£æ±ºã•ã‚Œã¦ã„ã‚‹ã“ã¨ã‚’ç¢ºèª
+3. ãƒ“ãƒ«ãƒ‰è¨­å®šã‚’é¸æŠžï¼ˆDebug/Releaseï¼‰
+4. ãƒ“ãƒ«ãƒ‰ã‚’å®Ÿè¡Œ
 
-## ƒTƒuƒ‚ƒWƒ…[ƒ‹‚ÌŠÇ—
+## ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ç®¡ç†
 
-### ƒTƒuƒ‚ƒWƒ…[ƒ‹‚ÌXV
+### ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®æ›´æ–°
 
 ```bash
-# ‚·‚×‚Ä‚ÌƒTƒuƒ‚ƒWƒ…[ƒ‹‚ðÅV”Å‚ÉXV
+# ã™ã¹ã¦ã®ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’æœ€æ–°ç‰ˆã«æ›´æ–°
 git submodule update --remote --recursive
 
-# “Á’è‚ÌƒTƒuƒ‚ƒWƒ…[ƒ‹‚Ì‚ÝXV
+# ç‰¹å®šã®ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®ã¿æ›´æ–°
 git submodule update --remote NSys/external/imgui
 ```
 
-### ƒTƒuƒ‚ƒWƒ…[ƒ‹‚Ìó‘ÔŠm”F
+### ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ç¢ºèª
 
 ```bash
-# ƒTƒuƒ‚ƒWƒ…[ƒ‹‚Ìó‘Ô‚ð•\Ž¦
+# ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’è¡¨ç¤º
 git submodule status
 
-# ƒTƒuƒ‚ƒWƒ…[ƒ‹‚ÌÚ×î•ñ‚ð•\Ž¦
+# ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®è©³ç´°æƒ…å ±ã‚’è¡¨ç¤º
 git submodule foreach 'git status'
 ```
 
-## ƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒO
+## ãƒˆãƒ©ãƒ–ãƒ«ã‚·ãƒ¥ãƒ¼ãƒ†ã‚£ãƒ³ã‚°
 
-### ƒTƒuƒ‚ƒWƒ…[ƒ‹‚ª‹ó‚Ìê‡
+### ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ãŒç©ºã®å ´åˆ
 
-1. `git submodule status` ‚ðŽÀs‚µ‚ÄƒTƒuƒ‚ƒWƒ…[ƒ‹‚Ìó‘Ô‚ðŠm”F
-2. ‹ó‚ÌƒfƒBƒŒƒNƒgƒŠ‚ª•\Ž¦‚³‚ê‚éê‡‚ÍAã‹L‚Ìu•û–@3v‚ðŽÀs
+1. `git submodule status` ã‚’å®Ÿè¡Œã—ã¦ã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®çŠ¶æ…‹ã‚’ç¢ºèª
+2. ç©ºã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªãŒè¡¨ç¤ºã•ã‚Œã‚‹å ´åˆã¯ã€ä¸Šè¨˜ã®ã€Œæ–¹æ³•3ã€ã‚’å®Ÿè¡Œ
 
-### ƒrƒ‹ƒhƒGƒ‰[‚ª”­¶‚·‚éê‡
+### ãƒ“ãƒ«ãƒ‰ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã™ã‚‹å ´åˆ
 
-1. ImGuiƒtƒ@ƒCƒ‹‚ª³‚µ‚­”z’u‚³‚ê‚Ä‚¢‚é‚©Šm”F
-2. ƒvƒƒWƒFƒNƒg‚ÌƒCƒ“ƒNƒ‹[ƒhƒpƒX‚ª³‚µ‚­Ý’è‚³‚ê‚Ä‚¢‚é‚©Šm”F
-3. •K—v‚ÈˆË‘¶ŠÖŒW‚ªƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚é‚©Šm”F
+1. ImGuiãƒ•ã‚¡ã‚¤ãƒ«ãŒæ­£ã—ãé…ç½®ã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèª
+2. ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã®ã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ‘ã‚¹ãŒæ­£ã—ãè¨­å®šã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèª
+3. å¿…è¦ãªä¾å­˜é–¢ä¿‚ãŒã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèª
 
-## ƒ‰ƒCƒZƒ“ƒX
+## ãƒ©ã‚¤ã‚»ãƒ³ã‚¹
 
-‚±‚ÌƒvƒƒWƒFƒNƒg‚Í“KØ‚Èƒ‰ƒCƒZƒ“ƒX‚Ì‰º‚Å’ñ‹Ÿ‚³‚ê‚Ä‚¢‚Ü‚·BÚ×‚Í `LICENSE.txt` ‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯é©åˆ‡ãªãƒ©ã‚¤ã‚»ãƒ³ã‚¹ã®ä¸‹ã§æä¾›ã•ã‚Œã¦ã„ã¾ã™ã€‚è©³ç´°ã¯ `LICENSE.txt` ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
-## vŒ£
+## è²¢çŒ®
 
-ƒvƒƒWƒFƒNƒg‚Ö‚ÌvŒ£‚ðŠ½Œ}‚µ‚Ü‚·Bƒvƒ‹ƒŠƒNƒGƒXƒg‚âƒCƒVƒ…[‚Ì•ñ‚ð‚¨‹CŒy‚É‚¨Šè‚¢‚µ‚Ü‚·B
+ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¸ã®è²¢çŒ®ã‚’æ­“è¿Žã—ã¾ã™ã€‚ãƒ—ãƒ«ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚„ã‚¤ã‚·ãƒ¥ãƒ¼ã®å ±å‘Šã‚’ãŠæ°—è»½ã«ãŠé¡˜ã„ã—ã¾ã™ã€‚
 
-## ƒTƒ|[ƒg
+## ã‚µãƒãƒ¼ãƒˆ
 
-–â‘è‚ª”­¶‚µ‚½ê‡‚ÍAˆÈ‰º‚ÌŽè‡‚Å‘Îˆ‚µ‚Ä‚­‚¾‚³‚¢F
+å•é¡ŒãŒç™ºç”Ÿã—ãŸå ´åˆã¯ã€ä»¥ä¸‹ã®æ‰‹é †ã§å¯¾å‡¦ã—ã¦ãã ã•ã„ï¼š
 
-1. ‚±‚ÌREADME‚Ìƒgƒ‰ƒuƒ‹ƒVƒ…[ƒeƒBƒ“ƒOƒZƒNƒVƒ‡ƒ“‚ðŠm”F
-2. Šù‘¶‚ÌƒCƒVƒ…[‚ðŒŸõ
-3. V‚µ‚¢ƒCƒVƒ…[‚ðì¬iÚ×‚Èî•ñ‚ðŠÜ‚ß‚Ä‚­‚¾‚³‚¢j
+1. ã“ã®READMEã®ãƒˆãƒ©ãƒ–ãƒ«ã‚·ãƒ¥ãƒ¼ãƒ†ã‚£ãƒ³ã‚°ã‚»ã‚¯ã‚·ãƒ§ãƒ³ã‚’ç¢ºèª
+2. æ—¢å­˜ã®ã‚¤ã‚·ãƒ¥ãƒ¼ã‚’æ¤œç´¢
+3. æ–°ã—ã„ã‚¤ã‚·ãƒ¥ãƒ¼ã‚’ä½œæˆï¼ˆè©³ç´°ãªæƒ…å ±ã‚’å«ã‚ã¦ãã ã•ã„ï¼‰

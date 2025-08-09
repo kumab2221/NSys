@@ -21,13 +21,13 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 
 
 
-// •`‰æŠÖ”‚ÌƒGƒNƒXƒ|[ƒg
+// æç”»é–¢æ•°ã®ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆ
 extern "C" __declspec(dllexport) void run(ImGuiContext* shared_context, const void*inputs, void *outputs)
 {
-    // ImGui‚ÌƒRƒ“ƒeƒLƒXƒg‚ğƒZƒbƒg
+    // ImGuiã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚»ãƒƒãƒˆ
     ImGui::SetCurrentContext(shared_context);
 
-    // DLL“à‚Å•`‰æ‚·‚éƒEƒBƒWƒFƒbƒg
+    // DLLå†…ã§æç”»ã™ã‚‹ã‚¦ã‚£ã‚¸ã‚§ãƒƒãƒˆ
     static bool show_window = true;
     static float slider_value = 0.0f;
 

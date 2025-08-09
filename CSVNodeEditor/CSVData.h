@@ -5,37 +5,37 @@
 #include <memory>
 #include <fstream>
 
-// CSVƒf[ƒ^‚ğŠi”[‚·‚éƒNƒ‰ƒX
+// CSVãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã™ã‚‹ã‚¯ãƒ©ã‚¹
 class CSVData
 {
 public:
     CSVData();
     ~CSVData();
 
-    // ƒtƒ@ƒCƒ‹‘€ì
+    // ãƒ•ã‚¡ã‚¤ãƒ«æ“ä½œ
     bool LoadFromFile(const std::string& filename);
     bool SaveToFile(const std::string& filename);
 
-    // ƒf[ƒ^ƒAƒNƒZƒX
+    // ãƒ‡ãƒ¼ã‚¿ã‚¢ã‚¯ã‚»ã‚¹
     const std::vector<std::string>& GetHeaders() const { return headers; }
     const std::vector<std::vector<std::string>>& GetRows() const { return rows; }
     
-    // ƒf[ƒ^‘€ì
+    // ãƒ‡ãƒ¼ã‚¿æ“ä½œ
     void AddRow(const std::vector<std::string>& row);
     void RemoveRow(size_t index);
     void Clear();
 
-    // “Œvî•ñ
+    // çµ±è¨ˆæƒ…å ±
     size_t GetRowCount() const { return rows.size(); }
     size_t GetColumnCount() const { return headers.size(); }
 
-    // ƒf[ƒ^ƒtƒBƒ‹ƒ^ƒŠƒ“ƒO
+    // ãƒ‡ãƒ¼ã‚¿ãƒ•ã‚£ãƒ«ã‚¿ãƒªãƒ³ã‚°
     std::vector<std::vector<std::string>> FilterRows(const std::string& column, const std::string& value);
     
-    // ƒf[ƒ^ƒ\[ƒg
+    // ãƒ‡ãƒ¼ã‚¿ã‚½ãƒ¼ãƒˆ
     void SortByColumn(const std::string& column, bool ascending = true);
 
-    // ƒf[ƒ^WŒv
+    // ãƒ‡ãƒ¼ã‚¿é›†è¨ˆ
     double GetColumnSum(const std::string& column);
     double GetColumnAverage(const std::string& column);
     std::string GetColumnMin(const std::string& column);
@@ -45,7 +45,7 @@ private:
     std::vector<std::string> headers;
     std::vector<std::vector<std::string>> rows;
 
-    // ƒwƒ‹ƒp[ŠÖ”
+    // ãƒ˜ãƒ«ãƒ‘ãƒ¼é–¢æ•°
     std::vector<std::string> ParseCSVLine(const std::string& line);
     int GetColumnIndex(const std::string& column) const;
     bool IsNumeric(const std::string& value) const;

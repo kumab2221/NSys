@@ -3,7 +3,7 @@
 
 #include "imgui.h"
 
-// �֐��錾
+// 関数宣言
 void ShowHelloWorldWindow(bool& show_demo_window, bool& show_another_window, ImVec4& clear_color);
 
 #endif // IMGUI_WINDOW_MANAGER_H

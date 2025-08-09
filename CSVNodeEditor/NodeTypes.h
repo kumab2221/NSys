@@ -4,7 +4,7 @@
 #include "CSVData.h"
 #include <string>
 
-// CSV“Ç‚İ‚İƒm[ƒh
+// CSVèª­ã¿è¾¼ã¿ãƒãƒ¼ãƒ‰
 class CSVLoadNode : public BaseNode
 {
 public:
@@ -20,7 +20,7 @@ private:
     std::shared_ptr<CSVData> outputData;
 };
 
-// ƒtƒBƒ‹ƒ^[ƒm[ƒh
+// ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ãƒãƒ¼ãƒ‰
 class FilterNode : public BaseNode
 {
 public:
@@ -38,7 +38,7 @@ private:
     std::shared_ptr<CSVData> outputData;
 };
 
-// ƒ\[ƒgƒm[ƒh
+// ã‚½ãƒ¼ãƒˆãƒãƒ¼ãƒ‰
 class SortNode : public BaseNode
 {
 public:
@@ -55,7 +55,7 @@ private:
     std::shared_ptr<CSVData> outputData;
 };
 
-// WŒvƒm[ƒh
+// é›†è¨ˆãƒãƒ¼ãƒ‰
 class AggregateNode : public BaseNode
 {
 public:
@@ -73,7 +73,7 @@ private:
     std::shared_ptr<CSVData> outputData;
 };
 
-// Œ‹‡ƒm[ƒh
+// çµåˆãƒãƒ¼ãƒ‰
 class JoinNode : public BaseNode
 {
 public:
@@ -92,7 +92,7 @@ private:
     std::shared_ptr<CSVData> outputData;
 };
 
-// o—Íƒm[ƒh
+// å‡ºåŠ›ãƒãƒ¼ãƒ‰
 class OutputNode : public BaseNode
 {
 public:

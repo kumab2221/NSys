@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <string>
 
-// ƒm[ƒh‚ÌŠî–{ƒNƒ‰ƒX
+// ãƒŽãƒ¼ãƒ‰ã®åŸºæœ¬ã‚¯ãƒ©ã‚¹
 class BaseNode
 {
 public:
@@ -30,7 +30,7 @@ protected:
     bool isSelected;
 };
 
-// ƒm[ƒhƒGƒfƒBƒ^ƒNƒ‰ƒX
+// ãƒŽãƒ¼ãƒ‰ã‚¨ãƒ‡ã‚£ã‚¿ã‚¯ãƒ©ã‚¹
 class NodeEditor
 {
 public:

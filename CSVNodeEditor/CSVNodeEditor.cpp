@@ -14,7 +14,7 @@ CSVNodeEditor::CSVNodeEditor()
     , showDataPreview(true)
     , showLog(true)
 {
-    // ‰Šúƒ^ƒu‚ğì¬
+    // åˆæœŸã‚¿ãƒ–ã‚’ä½œæˆ
     NewTab();
 }
 
@@ -24,10 +24,10 @@ CSVNodeEditor::~CSVNodeEditor()
 
 void CSVNodeEditor::Render()
 {
-    // ƒƒjƒ…[ƒo[‚ğ•`‰æ
+    // ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼ã‚’æç”»
     RenderMenuBar();
 
-    // ƒ^ƒuƒo[‚ğ•`‰æ
+    // ã‚¿ãƒ–ãƒãƒ¼ã‚’æç”»
     if (ImGui::BeginTabBar("CSVNodeEditorTabs"))
     {
         for (int i = 0; i < tabs.size(); ++i)
@@ -36,10 +36,10 @@ void CSVNodeEditor::Render()
             {
                 currentTab = i;
                 
-                // ƒƒCƒ“ƒGƒfƒBƒ^ƒGƒŠƒA
+                // ãƒ¡ã‚¤ãƒ³ã‚¨ãƒ‡ã‚£ã‚¿ã‚¨ãƒªã‚¢
                 ImGui::BeginChild("NodeEditorArea", ImVec2(0, 0), true);
                 
-                // ƒm[ƒhƒGƒfƒBƒ^‚ğ•`‰æ
+                // ãƒãƒ¼ãƒ‰ã‚¨ãƒ‡ã‚£ã‚¿ã‚’æç”»
                 if (tabs[i].nodeEditor)
                 {
                     tabs[i].nodeEditor->Render();
@@ -50,7 +50,7 @@ void CSVNodeEditor::Render()
                 ImGui::EndTabItem();
             }
             
-            // ƒ^ƒu‚ª•Â‚¶‚ç‚ê‚½ê‡‚Ìˆ—
+            // ã‚¿ãƒ–ãŒé–‰ã˜ã‚‰ã‚ŒãŸå ´åˆã®å‡¦ç†
             if (!tabs[i].isOpen)
             {
                 CloseTab(i);
@@ -58,7 +58,7 @@ void CSVNodeEditor::Render()
             }
         }
         
-        // V‚µ‚¢ƒ^ƒu‚ğ’Ç‰Á‚·‚éƒ{ƒ^ƒ“
+        // æ–°ã—ã„ã‚¿ãƒ–ã‚’è¿½åŠ ã™ã‚‹ãƒœã‚¿ãƒ³
         if (ImGui::TabItemButton("+", ImGuiTabItemFlags_Trailing | ImGuiTabItemFlags_NoTooltip))
         {
             NewTab();
@@ -67,31 +67,31 @@ void CSVNodeEditor::Render()
         ImGui::EndTabBar();
     }
 
-    // ƒTƒCƒhƒpƒlƒ‹‚ğ•`‰æ
+    // ã‚µã‚¤ãƒ‰ãƒ‘ãƒãƒ«ã‚’æç”»
     if (showNodePalette)
     {
-        ImGui::Begin("ƒm[ƒhƒpƒŒƒbƒg", &showNodePalette);
+        ImGui::Begin("ãƒãƒ¼ãƒ‰ãƒ‘ãƒ¬ãƒƒãƒˆ", &showNodePalette);
         RenderNodePalette();
         ImGui::End();
     }
 
     if (showProperties)
     {
-        ImGui::Begin("ƒvƒƒpƒeƒB", &showProperties);
+        ImGui::Begin("ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£", &showProperties);
         RenderProperties();
         ImGui::End();
     }
 
     if (showDataPreview)
     {
-        ImGui::Begin("ƒf[ƒ^ƒvƒŒƒrƒ…[", &showDataPreview);
+        ImGui::Begin("ãƒ‡ãƒ¼ã‚¿ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼", &showDataPreview);
         RenderDataPreview();
         ImGui::End();
     }
 
     if (showLog)
     {
-        ImGui::Begin("ƒƒO", &showLog);
+        ImGui::Begin("ãƒ­ã‚°", &showLog);
         RenderLog();
         ImGui::End();
     }
@@ -101,41 +101,41 @@ void CSVNodeEditor::RenderMenuBar()
 {
     if (ImGui::BeginMainMenuBar())
     {
-        if (ImGui::BeginMenu("ƒtƒ@ƒCƒ‹"))
+        if (ImGui::BeginMenu("ãƒ•ã‚¡ã‚¤ãƒ«"))
         {
-            if (ImGui::MenuItem("CSV‚ğŠJ‚­", "Ctrl+O"))
+            if (ImGui::MenuItem("CSVã‚’é–‹ã", "Ctrl+O"))
             {
                 OpenCSVFile();
             }
-            if (ImGui::MenuItem("CSV‚ğ•Û‘¶", "Ctrl+S"))
+            if (ImGui::MenuItem("CSVã‚’ä¿å­˜", "Ctrl+S"))
             {
                 SaveCSVFile();
             }
             ImGui::Separator();
-            if (ImGui::MenuItem("V‹Kƒ^ƒu", "Ctrl+T"))
+            if (ImGui::MenuItem("æ–°è¦ã‚¿ãƒ–", "Ctrl+T"))
             {
                 NewTab();
             }
             ImGui::EndMenu();
         }
 
-        if (ImGui::BeginMenu("•\¦"))
+        if (ImGui::BeginMenu("è¡¨ç¤º"))
         {
-            ImGui::MenuItem("ƒm[ƒhƒpƒŒƒbƒg", nullptr, &showNodePalette);
-            ImGui::MenuItem("ƒvƒƒpƒeƒB", nullptr, &showProperties);
-            ImGui::MenuItem("ƒf[ƒ^ƒvƒŒƒrƒ…[", nullptr, &showDataPreview);
-            ImGui::MenuItem("ƒƒO", nullptr, &showLog);
+            ImGui::MenuItem("ãƒãƒ¼ãƒ‰ãƒ‘ãƒ¬ãƒƒãƒˆ", nullptr, &showNodePalette);
+            ImGui::MenuItem("ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£", nullptr, &showProperties);
+            ImGui::MenuItem("ãƒ‡ãƒ¼ã‚¿ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼", nullptr, &showDataPreview);
+            ImGui::MenuItem("ãƒ­ã‚°", nullptr, &showLog);
             ImGui::EndMenu();
         }
 
-        if (ImGui::BeginMenu("Às"))
+        if (ImGui::BeginMenu("å®Ÿè¡Œ"))
         {
-            if (ImGui::MenuItem("Às", "F5"))
+            if (ImGui::MenuItem("å®Ÿè¡Œ", "F5"))
             {
-                // Œ»İ‚Ìƒ^ƒu‚Ìƒm[ƒhƒGƒfƒBƒ^‚ğÀs
+                // ç¾åœ¨ã®ã‚¿ãƒ–ã®ãƒãƒ¼ãƒ‰ã‚¨ãƒ‡ã‚£ã‚¿ã‚’å®Ÿè¡Œ
                 if (currentTab >= 0 && currentTab < tabs.size() && tabs[currentTab].nodeEditor)
                 {
-                    // Àsˆ—‚ğ‚±‚±‚ÉÀ‘•
+                    // å®Ÿè¡Œå‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
                 }
             }
             ImGui::EndMenu();
@@ -147,48 +147,48 @@ void CSVNodeEditor::RenderMenuBar()
 
 void CSVNodeEditor::RenderNodePalette()
 {
-    ImGui::Text("—˜—p‰Â”\‚Èƒm[ƒh:");
+    ImGui::Text("åˆ©ç”¨å¯èƒ½ãªãƒãƒ¼ãƒ‰:");
     ImGui::Separator();
 
-    if (ImGui::TreeNode("ƒf[ƒ^“ü—Í"))
+    if (ImGui::TreeNode("ãƒ‡ãƒ¼ã‚¿å…¥åŠ›"))
     {
-        if (ImGui::Button("CSV“Ç‚İ‚İ"))
+        if (ImGui::Button("CSVèª­ã¿è¾¼ã¿"))
         {
-            // Œ»İ‚Ìƒ^ƒu‚ÉCSV“Ç‚İ‚İƒm[ƒh‚ğ’Ç‰Á
+            // ç¾åœ¨ã®ã‚¿ãƒ–ã«CSVèª­ã¿è¾¼ã¿ãƒãƒ¼ãƒ‰ã‚’è¿½åŠ 
             if (currentTab >= 0 && currentTab < tabs.size() && tabs[currentTab].nodeEditor)
             {
-                // ƒm[ƒh’Ç‰Áˆ—‚ğ‚±‚±‚ÉÀ‘•
+                // ãƒãƒ¼ãƒ‰è¿½åŠ å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
             }
         }
         ImGui::TreePop();
     }
 
-    if (ImGui::TreeNode("ƒf[ƒ^ˆ—"))
+    if (ImGui::TreeNode("ãƒ‡ãƒ¼ã‚¿å‡¦ç†"))
     {
-        if (ImGui::Button("ƒtƒBƒ‹ƒ^["))
+        if (ImGui::Button("ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼"))
         {
-            // ƒtƒBƒ‹ƒ^[ƒm[ƒh‚ğ’Ç‰Á
+            // ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ãƒãƒ¼ãƒ‰ã‚’è¿½åŠ 
         }
-        if (ImGui::Button("ƒ\[ƒg"))
+        if (ImGui::Button("ã‚½ãƒ¼ãƒˆ"))
         {
-            // ƒ\[ƒgƒm[ƒh‚ğ’Ç‰Á
+            // ã‚½ãƒ¼ãƒˆãƒãƒ¼ãƒ‰ã‚’è¿½åŠ 
         }
-        if (ImGui::Button("WŒv"))
+        if (ImGui::Button("é›†è¨ˆ"))
         {
-            // WŒvƒm[ƒh‚ğ’Ç‰Á
+            // é›†è¨ˆãƒãƒ¼ãƒ‰ã‚’è¿½åŠ 
         }
-        if (ImGui::Button("Œ‹‡"))
+        if (ImGui::Button("çµåˆ"))
         {
-            // Œ‹‡ƒm[ƒh‚ğ’Ç‰Á
+            // çµåˆãƒãƒ¼ãƒ‰ã‚’è¿½åŠ 
         }
         ImGui::TreePop();
     }
 
-    if (ImGui::TreeNode("ƒf[ƒ^o—Í"))
+    if (ImGui::TreeNode("ãƒ‡ãƒ¼ã‚¿å‡ºåŠ›"))
     {
-        if (ImGui::Button("CSVo—Í"))
+        if (ImGui::Button("CSVå‡ºåŠ›"))
         {
-            // o—Íƒm[ƒh‚ğ’Ç‰Á
+            // å‡ºåŠ›ãƒãƒ¼ãƒ‰ã‚’è¿½åŠ 
         }
         ImGui::TreePop();
     }
@@ -198,12 +198,12 @@ void CSVNodeEditor::RenderProperties()
 {
     if (currentTab >= 0 && currentTab < tabs.size())
     {
-        ImGui::Text("ƒ^ƒu: %s", tabs[currentTab].name.c_str());
+        ImGui::Text("ã‚¿ãƒ–: %s", tabs[currentTab].name.c_str());
         ImGui::Separator();
         
-        // ‘I‘ğ‚³‚ê‚½ƒm[ƒh‚ÌƒvƒƒpƒeƒB‚ğ•\¦
-        ImGui::Text("‘I‘ğ‚³‚ê‚½ƒm[ƒh‚ÌƒvƒƒpƒeƒB");
-        // ‚±‚±‚ÉƒvƒƒpƒeƒB•ÒWUI‚ğÀ‘•
+        // é¸æŠã•ã‚ŒãŸãƒãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ã‚’è¡¨ç¤º
+        ImGui::Text("é¸æŠã•ã‚ŒãŸãƒãƒ¼ãƒ‰ã®ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£");
+        // ã“ã“ã«ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£ç·¨é›†UIã‚’å®Ÿè£…
     }
 }
 
@@ -212,16 +212,16 @@ void CSVNodeEditor::RenderDataPreview()
     if (currentTab >= 0 && currentTab < tabs.size() && tabs[currentTab].csvData)
     {
         const auto& data = tabs[currentTab].csvData;
-        ImGui::Text("ƒf[ƒ^ƒvƒŒƒrƒ…[ (%zu s, %zu —ñ)", 
+        ImGui::Text("ãƒ‡ãƒ¼ã‚¿ãƒ—ãƒ¬ãƒ“ãƒ¥ãƒ¼ (%zu è¡Œ, %zu åˆ—)", 
                    data->GetRowCount(), data->GetColumnCount());
         
         ImGui::Separator();
         
-        // ƒwƒbƒ_[‚ğ•\¦
+        // ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’è¡¨ç¤º
         const auto& headers = data->GetHeaders();
         if (!headers.empty())
         {
-            ImGui::Text("ƒwƒbƒ_[:");
+            ImGui::Text("ãƒ˜ãƒƒãƒ€ãƒ¼:");
             for (size_t i = 0; i < headers.size(); ++i)
             {
                 ImGui::SameLine();
@@ -230,14 +230,14 @@ void CSVNodeEditor::RenderDataPreview()
             }
         }
         
-        // Å‰‚Ì”s‚ğ•\¦
+        // æœ€åˆã®æ•°è¡Œã‚’è¡¨ç¤º
         const auto& rows = data->GetRows();
         if (!rows.empty())
         {
-            ImGui::Text("ƒf[ƒ^ (Å‰‚Ì10s):");
+            ImGui::Text("ãƒ‡ãƒ¼ã‚¿ (æœ€åˆã®10è¡Œ):");
             for (size_t i = 0; i < std::min(rows.size(), size_t(10)); ++i)
             {
-                ImGui::Text("s %zu:", i + 1);
+                ImGui::Text("è¡Œ %zu:", i + 1);
                 for (size_t j = 0; j < rows[i].size(); ++j)
                 {
                     ImGui::SameLine();
@@ -248,49 +248,49 @@ void CSVNodeEditor::RenderDataPreview()
     }
     else
     {
-        ImGui::Text("ƒf[ƒ^‚ª“Ç‚İ‚Ü‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+        ImGui::Text("ãƒ‡ãƒ¼ã‚¿ãŒèª­ã¿è¾¼ã¾ã‚Œã¦ã„ã¾ã›ã‚“");
     }
 }
 
 void CSVNodeEditor::RenderLog()
 {
-    ImGui::Text("ƒƒO:");
+    ImGui::Text("ãƒ­ã‚°:");
     ImGui::Separator();
     
-    // ƒƒOƒƒbƒZ[ƒW‚ğ•\¦
-    ImGui::Text("CSVNodeEditorƒvƒ‰ƒOƒCƒ“‚ª³í‚É“Ç‚İ‚Ü‚ê‚Ü‚µ‚½");
-    ImGui::Text("Œ»İ‚Ìƒ^ƒu: %d", currentTab);
+    // ãƒ­ã‚°ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤º
+    ImGui::Text("CSVNodeEditorãƒ—ãƒ©ã‚°ã‚¤ãƒ³ãŒæ­£å¸¸ã«èª­ã¿è¾¼ã¾ã‚Œã¾ã—ãŸ");
+    ImGui::Text("ç¾åœ¨ã®ã‚¿ãƒ–: %d", currentTab);
     
     if (currentTab >= 0 && currentTab < tabs.size())
     {
-        ImGui::Text("ƒ^ƒu–¼: %s", tabs[currentTab].name.c_str());
+        ImGui::Text("ã‚¿ãƒ–å: %s", tabs[currentTab].name.c_str());
     }
 }
 
 void CSVNodeEditor::OpenCSVFile()
 {
-    // ƒtƒ@ƒCƒ‹‘I‘ğƒ_ƒCƒAƒƒO‚ğÀ‘•
-    // Œ»İ‚ÍŠÈˆÕÀ‘•
+    // ãƒ•ã‚¡ã‚¤ãƒ«é¸æŠãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’å®Ÿè£…
+    // ç¾åœ¨ã¯ç°¡æ˜“å®Ÿè£…
     if (currentTab >= 0 && currentTab < tabs.size())
     {
-        // CSVƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Şˆ—‚ğ‚±‚±‚ÉÀ‘•
-        ImGui::OpenPopup("ƒtƒ@ƒCƒ‹‘I‘ğ");
+        // CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
+        ImGui::OpenPopup("ãƒ•ã‚¡ã‚¤ãƒ«é¸æŠ");
     }
 }
 
 void CSVNodeEditor::SaveCSVFile()
 {
-    // ƒtƒ@ƒCƒ‹•Û‘¶ƒ_ƒCƒAƒƒO‚ğÀ‘•
+    // ãƒ•ã‚¡ã‚¤ãƒ«ä¿å­˜ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’å®Ÿè£…
     if (currentTab >= 0 && currentTab < tabs.size() && tabs[currentTab].csvData)
     {
-        // CSVƒtƒ@ƒCƒ‹‚ğ•Û‘¶‚·‚éˆ—‚ğ‚±‚±‚ÉÀ‘•
+        // CSVãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä¿å­˜ã™ã‚‹å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
     }
 }
 
 void CSVNodeEditor::NewTab()
 {
     TabData newTab;
-    newTab.name = "ƒ^ƒu " + std::to_string(tabs.size() + 1);
+    newTab.name = "ã‚¿ãƒ– " + std::to_string(tabs.size() + 1);
     newTab.isOpen = true;
     newTab.nodeEditor = std::make_unique<NodeEditor>();
     newTab.csvData = std::make_unique<CSVData>();

@@ -23,13 +23,13 @@ bool CSVData::LoadFromFile(const std::string& filename)
     Clear();
     std::string line;
     
-    // ƒwƒbƒ_[s‚ð“Ç‚Ýž‚Ý
+    // ãƒ˜ãƒƒãƒ€ãƒ¼è¡Œã‚’èª­ã¿è¾¼ã¿
     if (std::getline(file, line))
     {
         headers = ParseCSVLine(line);
     }
 
-    // ƒf[ƒ^s‚ð“Ç‚Ýž‚Ý
+    // ãƒ‡ãƒ¼ã‚¿è¡Œã‚’èª­ã¿è¾¼ã¿
     while (std::getline(file, line))
     {
         if (!line.empty())
@@ -50,7 +50,7 @@ bool CSVData::SaveToFile(const std::string& filename)
         return false;
     }
 
-    // ƒwƒbƒ_[‚ð‘‚«ž‚Ý
+    // ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’æ›¸ãè¾¼ã¿
     for (size_t i = 0; i < headers.size(); ++i)
     {
         if (i > 0) file << ",";
@@ -58,7 +58,7 @@ bool CSVData::SaveToFile(const std::string& filename)
     }
     file << std::endl;
 
-    // ƒf[ƒ^s‚ð‘‚«ž‚Ý
+    // ãƒ‡ãƒ¼ã‚¿è¡Œã‚’æ›¸ãè¾¼ã¿
     for (const auto& row : rows)
     {
         for (size_t i = 0; i < row.size(); ++i)
@@ -217,7 +217,7 @@ std::vector<std::string> CSVData::ParseCSVLine(const std::string& line)
     
     while (std::getline(ss, field, ','))
     {
-        // ‘OŒã‚Ì‹ó”’‚ðíœ
+        // å‰å¾Œã®ç©ºç™½ã‚’å‰Šé™¤
         field.erase(0, field.find_first_not_of(" \t\r\n"));
         field.erase(field.find_last_not_of(" \t\r\n") + 1);
         result.push_back(field);

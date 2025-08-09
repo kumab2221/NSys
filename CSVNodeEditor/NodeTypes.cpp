@@ -3,9 +3,9 @@
 #include "imnodes.h"
 #include <imgui.h>
 
-// CSV“Ç‚İ‚İƒm[ƒh
+// CSVèª­ã¿è¾¼ã¿ãƒãƒ¼ãƒ‰
 CSVLoadNode::CSVLoadNode(int id)
-    : BaseNode(id, "CSV“Ç‚İ‚İ")
+    : BaseNode(id, "CSVèª­ã¿è¾¼ã¿")
     , fileLoaded(false)
 {
     outputData = std::make_shared<CSVData>();
@@ -13,23 +13,23 @@ CSVLoadNode::CSVLoadNode(int id)
 
 void CSVLoadNode::Render()
 {
-    // “ü—Íƒsƒ“i‚È‚µj
+    // å…¥åŠ›ãƒ”ãƒ³ï¼ˆãªã—ï¼‰
     
-    // o—Íƒsƒ“
+    // å‡ºåŠ›ãƒ”ãƒ³
     ImNodes::BeginOutputAttribute(nodeId * 100 + 1);
-    ImGui::Text("o—Í");
+    ImGui::Text("å‡ºåŠ›");
     ImNodes::EndOutputAttribute();
     
-    // ƒtƒ@ƒCƒ‹ƒpƒX“ü—Í
-    ImGui::Text("ƒtƒ@ƒCƒ‹ƒpƒX:");
+    // ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹å…¥åŠ›
+    ImGui::Text("ãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹:");
     static char filePathBuffer[256] = "";
     if (ImGui::InputText("##FilePath", filePathBuffer, sizeof(filePathBuffer)))
     {
         filePath = filePathBuffer;
     }
     
-    // ƒtƒ@ƒCƒ‹“Ç‚İ‚İƒ{ƒ^ƒ“
-    if (ImGui::Button("ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚İ"))
+    // ãƒ•ã‚¡ã‚¤ãƒ«èª­ã¿è¾¼ã¿ãƒœã‚¿ãƒ³
+    if (ImGui::Button("ãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã¿"))
     {
         if (outputData->LoadFromFile(filePath))
         {
@@ -37,22 +37,22 @@ void CSVLoadNode::Render()
         }
     }
     
-    // ó‘Ô•\¦
+    // çŠ¶æ…‹è¡¨ç¤º
     if (fileLoaded)
     {
-        ImGui::TextColored(ImVec4(0, 1, 0, 1), "? “Ç‚İ‚İŠ®—¹");
-        ImGui::Text("s”: %zu", outputData->GetRowCount());
-        ImGui::Text("—ñ”: %zu", outputData->GetColumnCount());
+        ImGui::TextColored(ImVec4(0, 1, 0, 1), "? èª­ã¿è¾¼ã¿å®Œäº†");
+        ImGui::Text("è¡Œæ•°: %zu", outputData->GetRowCount());
+        ImGui::Text("åˆ—æ•°: %zu", outputData->GetColumnCount());
     }
     else
     {
-        ImGui::TextColored(ImVec4(1, 0, 0, 1), "? –¢“Ç‚İ‚İ");
+        ImGui::TextColored(ImVec4(1, 0, 0, 1), "? æœªèª­ã¿è¾¼ã¿");
     }
 }
 
 void CSVLoadNode::Process()
 {
-    // ƒtƒ@ƒCƒ‹‚ª“Ç‚İ‚Ü‚ê‚Ä‚¢‚È‚¢ê‡‚Í“Ç‚İ‚İ‚ğÀs
+    // ãƒ•ã‚¡ã‚¤ãƒ«ãŒèª­ã¿è¾¼ã¾ã‚Œã¦ã„ãªã„å ´åˆã¯èª­ã¿è¾¼ã¿ã‚’å®Ÿè¡Œ
     if (!fileLoaded && !filePath.empty())
     {
         fileLoaded = outputData->LoadFromFile(filePath);
@@ -61,17 +61,17 @@ void CSVLoadNode::Process()
 
 void CSVLoadNode::SaveState()
 {
-    // ó‘Ô•Û‘¶ˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹ä¿å­˜å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
 void CSVLoadNode::LoadState()
 {
-    // ó‘Ô“Ç‚İ‚İˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹èª­ã¿è¾¼ã¿å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
-// ƒtƒBƒ‹ƒ^[ƒm[ƒh
+// ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ãƒãƒ¼ãƒ‰
 FilterNode::FilterNode(int id)
-    : BaseNode(id, "ƒtƒBƒ‹ƒ^[")
+    : BaseNode(id, "ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼")
     , filterOperator("==")
 {
     inputData = std::make_shared<CSVData>();
@@ -80,29 +80,29 @@ FilterNode::FilterNode(int id)
 
 void FilterNode::Render()
 {
-    // “ü—Íƒsƒ“
+    // å…¥åŠ›ãƒ”ãƒ³
     ImNodes::BeginInputAttribute(nodeId * 100 + 1);
-    ImGui::Text("“ü—Í");
+    ImGui::Text("å…¥åŠ›");
     ImNodes::EndInputAttribute();
     
-    // o—Íƒsƒ“
+    // å‡ºåŠ›ãƒ”ãƒ³
     ImNodes::BeginOutputAttribute(nodeId * 100 + 2);
-    ImGui::Text("o—Í");
+    ImGui::Text("å‡ºåŠ›");
     ImNodes::EndOutputAttribute();
     
-    // ƒtƒBƒ‹ƒ^[İ’è
-    ImGui::Text("ƒtƒBƒ‹ƒ^[İ’è:");
+    // ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼è¨­å®š
+    ImGui::Text("ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼è¨­å®š:");
     
-    // —ñ‘I‘ğ
+    // åˆ—é¸æŠ
     static char columnBuffer[128] = "";
-    if (ImGui::InputText("—ñ–¼", columnBuffer, sizeof(columnBuffer)))
+    if (ImGui::InputText("åˆ—å", columnBuffer, sizeof(columnBuffer)))
     {
         filterColumn = columnBuffer;
     }
     
-    // ‰‰Zq‘I‘ğ
+    // æ¼”ç®—å­é¸æŠ
     const char* operators[] = { "==", "!=", ">", "<", ">=", "<=", "contains" };
-    if (ImGui::BeginCombo("‰‰Zq", filterOperator.c_str()))
+    if (ImGui::BeginCombo("æ¼”ç®—å­", filterOperator.c_str()))
     {
         for (const char* op : operators)
         {
@@ -114,23 +114,23 @@ void FilterNode::Render()
         ImGui::EndCombo();
     }
     
-    // ’l“ü—Í
+    // å€¤å…¥åŠ›
     static char valueBuffer[128] = "";
-    if (ImGui::InputText("’l", valueBuffer, sizeof(valueBuffer)))
+    if (ImGui::InputText("å€¤", valueBuffer, sizeof(valueBuffer)))
     {
         filterValue = valueBuffer;
     }
     
-    // ƒtƒBƒ‹ƒ^[Àsƒ{ƒ^ƒ“
-    if (ImGui::Button("ƒtƒBƒ‹ƒ^[Às"))
+    // ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼å®Ÿè¡Œãƒœã‚¿ãƒ³
+    if (ImGui::Button("ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼å®Ÿè¡Œ"))
     {
         Process();
     }
     
-    // Œ‹‰Ê•\¦
+    // çµæœè¡¨ç¤º
     if (!outputData->GetRows().empty())
     {
-        ImGui::Text("ƒtƒBƒ‹ƒ^[Œ‹‰Ê: %zu s", outputData->GetRowCount());
+        ImGui::Text("ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼çµæœ: %zu è¡Œ", outputData->GetRowCount());
     }
 }
 
@@ -138,12 +138,12 @@ void FilterNode::Process()
 {
     if (inputData && !filterColumn.empty() && !filterValue.empty())
     {
-        // ƒtƒBƒ‹ƒ^[ˆ—‚ğÀ‘•
+        // ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼å‡¦ç†ã‚’å®Ÿè£…
         auto filteredRows = inputData->FilterRows(filterColumn, filterValue);
         
-        // Œ‹‰Ê‚ğo—Íƒf[ƒ^‚Éİ’è
+        // çµæœã‚’å‡ºåŠ›ãƒ‡ãƒ¼ã‚¿ã«è¨­å®š
         outputData->Clear();
-        outputData->AddRow(inputData->GetHeaders()); // ƒwƒbƒ_[‚ğ’Ç‰Á
+        outputData->AddRow(inputData->GetHeaders()); // ãƒ˜ãƒƒãƒ€ãƒ¼ã‚’è¿½åŠ 
         for (const auto& row : filteredRows)
         {
             outputData->AddRow(row);
@@ -153,17 +153,17 @@ void FilterNode::Process()
 
 void FilterNode::SaveState()
 {
-    // ó‘Ô•Û‘¶ˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹ä¿å­˜å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
 void FilterNode::LoadState()
 {
-    // ó‘Ô“Ç‚İ‚İˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹èª­ã¿è¾¼ã¿å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
-// ƒ\[ƒgƒm[ƒh
+// ã‚½ãƒ¼ãƒˆãƒãƒ¼ãƒ‰
 SortNode::SortNode(int id)
-    : BaseNode(id, "ƒ\[ƒg")
+    : BaseNode(id, "ã‚½ãƒ¼ãƒˆ")
     , ascending(true)
 {
     inputData = std::make_shared<CSVData>();
@@ -172,31 +172,31 @@ SortNode::SortNode(int id)
 
 void SortNode::Render()
 {
-    // “ü—Íƒsƒ“
+    // å…¥åŠ›ãƒ”ãƒ³
     ImNodes::BeginInputAttribute(nodeId * 100 + 1);
-    ImGui::Text("“ü—Í");
+    ImGui::Text("å…¥åŠ›");
     ImNodes::EndInputAttribute();
     
-    // o—Íƒsƒ“
+    // å‡ºåŠ›ãƒ”ãƒ³
     ImNodes::BeginOutputAttribute(nodeId * 100 + 2);
-    ImGui::Text("o—Í");
+    ImGui::Text("å‡ºåŠ›");
     ImNodes::EndOutputAttribute();
     
-    // ƒ\[ƒgİ’è
-    ImGui::Text("ƒ\[ƒgİ’è:");
+    // ã‚½ãƒ¼ãƒˆè¨­å®š
+    ImGui::Text("ã‚½ãƒ¼ãƒˆè¨­å®š:");
     
-    // —ñ‘I‘ğ
+    // åˆ—é¸æŠ
     static char columnBuffer[128] = "";
-    if (ImGui::InputText("—ñ–¼", columnBuffer, sizeof(columnBuffer)))
+    if (ImGui::InputText("åˆ—å", columnBuffer, sizeof(columnBuffer)))
     {
         sortColumn = columnBuffer;
     }
     
-    // ¸‡/~‡‘I‘ğ
-    ImGui::Checkbox("¸‡", &ascending);
+    // æ˜‡é †/é™é †é¸æŠ
+    ImGui::Checkbox("æ˜‡é †", &ascending);
     
-    // ƒ\[ƒgÀsƒ{ƒ^ƒ“
-    if (ImGui::Button("ƒ\[ƒgÀs"))
+    // ã‚½ãƒ¼ãƒˆå®Ÿè¡Œãƒœã‚¿ãƒ³
+    if (ImGui::Button("ã‚½ãƒ¼ãƒˆå®Ÿè¡Œ"))
     {
         Process();
     }
@@ -206,25 +206,25 @@ void SortNode::Process()
 {
     if (inputData && !sortColumn.empty())
     {
-        // ƒ\[ƒgˆ—‚ğÀ‘•
-        *outputData = *inputData; // ƒf[ƒ^‚ğƒRƒs[
+        // ã‚½ãƒ¼ãƒˆå‡¦ç†ã‚’å®Ÿè£…
+        *outputData = *inputData; // ãƒ‡ãƒ¼ã‚¿ã‚’ã‚³ãƒ”ãƒ¼
         outputData->SortByColumn(sortColumn, ascending);
     }
 }
 
 void SortNode::SaveState()
 {
-    // ó‘Ô•Û‘¶ˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹ä¿å­˜å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
 void SortNode::LoadState()
 {
-    // ó‘Ô“Ç‚İ‚İˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹èª­ã¿è¾¼ã¿å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
-// WŒvƒm[ƒh
+// é›†è¨ˆãƒãƒ¼ãƒ‰
 AggregateNode::AggregateNode(int id)
-    : BaseNode(id, "WŒv")
+    : BaseNode(id, "é›†è¨ˆ")
     , aggregateFunction("sum")
 {
     inputData = std::make_shared<CSVData>();
@@ -233,36 +233,36 @@ AggregateNode::AggregateNode(int id)
 
 void AggregateNode::Render()
 {
-    // “ü—Íƒsƒ“
+    // å…¥åŠ›ãƒ”ãƒ³
     ImNodes::BeginInputAttribute(nodeId * 100 + 1);
-    ImGui::Text("“ü—Í");
+    ImGui::Text("å…¥åŠ›");
     ImNodes::EndInputAttribute();
     
-    // o—Íƒsƒ“
+    // å‡ºåŠ›ãƒ”ãƒ³
     ImNodes::BeginOutputAttribute(nodeId * 100 + 2);
-    ImGui::Text("o—Í");
+    ImGui::Text("å‡ºåŠ›");
     ImNodes::EndOutputAttribute();
     
-    // WŒvİ’è
-    ImGui::Text("WŒvİ’è:");
+    // é›†è¨ˆè¨­å®š
+    ImGui::Text("é›†è¨ˆè¨­å®š:");
     
-    // ƒOƒ‹[ƒv‰»—ñ
+    // ã‚°ãƒ«ãƒ¼ãƒ—åŒ–åˆ—
     static char groupColumnBuffer[128] = "";
-    if (ImGui::InputText("ƒOƒ‹[ƒv‰»—ñ", groupColumnBuffer, sizeof(groupColumnBuffer)))
+    if (ImGui::InputText("ã‚°ãƒ«ãƒ¼ãƒ—åŒ–åˆ—", groupColumnBuffer, sizeof(groupColumnBuffer)))
     {
         groupColumn = groupColumnBuffer;
     }
     
-    // WŒv—ñ
+    // é›†è¨ˆåˆ—
     static char aggregateColumnBuffer[128] = "";
-    if (ImGui::InputText("WŒv—ñ", aggregateColumnBuffer, sizeof(aggregateColumnBuffer)))
+    if (ImGui::InputText("é›†è¨ˆåˆ—", aggregateColumnBuffer, sizeof(aggregateColumnBuffer)))
     {
         aggregateColumn = aggregateColumnBuffer;
     }
     
-    // WŒvŠÖ”‘I‘ğ
+    // é›†è¨ˆé–¢æ•°é¸æŠ
     const char* functions[] = { "sum", "average", "count", "min", "max" };
-    if (ImGui::BeginCombo("WŒvŠÖ”", aggregateFunction.c_str()))
+    if (ImGui::BeginCombo("é›†è¨ˆé–¢æ•°", aggregateFunction.c_str()))
     {
         for (const char* func : functions)
         {
@@ -274,8 +274,8 @@ void AggregateNode::Render()
         ImGui::EndCombo();
     }
     
-    // WŒvÀsƒ{ƒ^ƒ“
-    if (ImGui::Button("WŒvÀs"))
+    // é›†è¨ˆå®Ÿè¡Œãƒœã‚¿ãƒ³
+    if (ImGui::Button("é›†è¨ˆå®Ÿè¡Œ"))
     {
         Process();
     }
@@ -285,34 +285,34 @@ void AggregateNode::Process()
 {
     if (inputData && !groupColumn.empty() && !aggregateColumn.empty())
     {
-        // WŒvˆ—‚ğÀ‘•
-        // ŠÈˆÕÀ‘•‚Ì‚½‚ßAŠî–{“I‚ÈWŒv‚Ì‚İ
+        // é›†è¨ˆå‡¦ç†ã‚’å®Ÿè£…
+        // ç°¡æ˜“å®Ÿè£…ã®ãŸã‚ã€åŸºæœ¬çš„ãªé›†è¨ˆã®ã¿
         if (aggregateFunction == "sum")
         {
             double sum = inputData->GetColumnSum(aggregateColumn);
-            // Œ‹‰Ê‚ğo—Íƒf[ƒ^‚Éİ’è
+            // çµæœã‚’å‡ºåŠ›ãƒ‡ãƒ¼ã‚¿ã«è¨­å®š
         }
         else if (aggregateFunction == "average")
         {
             double avg = inputData->GetColumnAverage(aggregateColumn);
-            // Œ‹‰Ê‚ğo—Íƒf[ƒ^‚Éİ’è
+            // çµæœã‚’å‡ºåŠ›ãƒ‡ãƒ¼ã‚¿ã«è¨­å®š
         }
     }
 }
 
 void AggregateNode::SaveState()
 {
-    // ó‘Ô•Û‘¶ˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹ä¿å­˜å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
 void AggregateNode::LoadState()
 {
-    // ó‘Ô“Ç‚İ‚İˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹èª­ã¿è¾¼ã¿å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
-// Œ‹‡ƒm[ƒh
+// çµåˆãƒãƒ¼ãƒ‰
 JoinNode::JoinNode(int id)
-    : BaseNode(id, "Œ‹‡")
+    : BaseNode(id, "çµåˆ")
     , joinType("inner")
 {
     leftInputData = std::make_shared<CSVData>();
@@ -322,41 +322,41 @@ JoinNode::JoinNode(int id)
 
 void JoinNode::Render()
 {
-    // ¶“ü—Íƒsƒ“
+    // å·¦å…¥åŠ›ãƒ”ãƒ³
     ImNodes::BeginInputAttribute(nodeId * 100 + 1);
-    ImGui::Text("¶“ü—Í");
+    ImGui::Text("å·¦å…¥åŠ›");
     ImNodes::EndInputAttribute();
     
-    // ‰E“ü—Íƒsƒ“
+    // å³å…¥åŠ›ãƒ”ãƒ³
     ImNodes::BeginInputAttribute(nodeId * 100 + 2);
-    ImGui::Text("‰E“ü—Í");
+    ImGui::Text("å³å…¥åŠ›");
     ImNodes::EndInputAttribute();
     
-    // o—Íƒsƒ“
+    // å‡ºåŠ›ãƒ”ãƒ³
     ImNodes::BeginOutputAttribute(nodeId * 100 + 3);
-    ImGui::Text("o—Í");
+    ImGui::Text("å‡ºåŠ›");
     ImNodes::EndOutputAttribute();
     
-    // Œ‹‡İ’è
-    ImGui::Text("Œ‹‡İ’è:");
+    // çµåˆè¨­å®š
+    ImGui::Text("çµåˆè¨­å®š:");
     
-    // ¶Œ‹‡—ñ
+    // å·¦çµåˆåˆ—
     static char leftColumnBuffer[128] = "";
-    if (ImGui::InputText("¶Œ‹‡—ñ", leftColumnBuffer, sizeof(leftColumnBuffer)))
+    if (ImGui::InputText("å·¦çµåˆåˆ—", leftColumnBuffer, sizeof(leftColumnBuffer)))
     {
         leftJoinColumn = leftColumnBuffer;
     }
     
-    // ‰EŒ‹‡—ñ
+    // å³çµåˆåˆ—
     static char rightColumnBuffer[128] = "";
-    if (ImGui::InputText("‰EŒ‹‡—ñ", rightColumnBuffer, sizeof(rightColumnBuffer)))
+    if (ImGui::InputText("å³çµåˆåˆ—", rightColumnBuffer, sizeof(rightColumnBuffer)))
     {
         rightJoinColumn = rightColumnBuffer;
     }
     
-    // Œ‹‡ƒ^ƒCƒv‘I‘ğ
+    // çµåˆã‚¿ã‚¤ãƒ—é¸æŠ
     const char* joinTypes[] = { "inner", "left", "right", "outer" };
-    if (ImGui::BeginCombo("Œ‹‡ƒ^ƒCƒv", joinType.c_str()))
+    if (ImGui::BeginCombo("çµåˆã‚¿ã‚¤ãƒ—", joinType.c_str()))
     {
         for (const char* type : joinTypes)
         {
@@ -368,8 +368,8 @@ void JoinNode::Render()
         ImGui::EndCombo();
     }
     
-    // Œ‹‡Àsƒ{ƒ^ƒ“
-    if (ImGui::Button("Œ‹‡Às"))
+    // çµåˆå®Ÿè¡Œãƒœã‚¿ãƒ³
+    if (ImGui::Button("çµåˆå®Ÿè¡Œ"))
     {
         Process();
     }
@@ -379,55 +379,55 @@ void JoinNode::Process()
 {
     if (leftInputData && rightInputData && !leftJoinColumn.empty() && !rightJoinColumn.empty())
     {
-        // Œ‹‡ˆ—‚ğÀ‘•
-        // ŠÈˆÕÀ‘•‚Ì‚½‚ßAŠî–{“I‚ÈŒ‹‡‚Ì‚İ
+        // çµåˆå‡¦ç†ã‚’å®Ÿè£…
+        // ç°¡æ˜“å®Ÿè£…ã®ãŸã‚ã€åŸºæœ¬çš„ãªçµåˆã®ã¿
     }
 }
 
 void JoinNode::SaveState()
 {
-    // ó‘Ô•Û‘¶ˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹ä¿å­˜å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
 void JoinNode::LoadState()
 {
-    // ó‘Ô“Ç‚İ‚İˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹èª­ã¿è¾¼ã¿å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
-// o—Íƒm[ƒh
+// å‡ºåŠ›ãƒãƒ¼ãƒ‰
 OutputNode::OutputNode(int id)
-    : BaseNode(id, "CSVo—Í")
+    : BaseNode(id, "CSVå‡ºåŠ›")
 {
     inputData = std::make_shared<CSVData>();
 }
 
 void OutputNode::Render()
 {
-    // “ü—Íƒsƒ“
+    // å…¥åŠ›ãƒ”ãƒ³
     ImNodes::BeginInputAttribute(nodeId * 100 + 1);
-    ImGui::Text("“ü—Í");
+    ImGui::Text("å…¥åŠ›");
     ImNodes::EndInputAttribute();
     
-    // o—Íİ’è
-    ImGui::Text("o—Íİ’è:");
+    // å‡ºåŠ›è¨­å®š
+    ImGui::Text("å‡ºåŠ›è¨­å®š:");
     
-    // o—ÍƒpƒX
+    // å‡ºåŠ›ãƒ‘ã‚¹
     static char outputPathBuffer[256] = "";
-    if (ImGui::InputText("o—ÍƒpƒX", outputPathBuffer, sizeof(outputPathBuffer)))
+    if (ImGui::InputText("å‡ºåŠ›ãƒ‘ã‚¹", outputPathBuffer, sizeof(outputPathBuffer)))
     {
         outputPath = outputPathBuffer;
     }
     
-    // •Û‘¶ƒ{ƒ^ƒ“
-    if (ImGui::Button("CSV•Û‘¶"))
+    // ä¿å­˜ãƒœã‚¿ãƒ³
+    if (ImGui::Button("CSVä¿å­˜"))
     {
         Process();
     }
     
-    // ó‘Ô•\¦
+    // çŠ¶æ…‹è¡¨ç¤º
     if (!inputData->GetRows().empty())
     {
-        ImGui::Text("•Û‘¶‘ÎÛ: %zu s", inputData->GetRowCount());
+        ImGui::Text("ä¿å­˜å¯¾è±¡: %zu è¡Œ", inputData->GetRowCount());
     }
 }
 
@@ -441,10 +441,10 @@ void OutputNode::Process()
 
 void OutputNode::SaveState()
 {
-    // ó‘Ô•Û‘¶ˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹ä¿å­˜å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }
 
 void OutputNode::LoadState()
 {
-    // ó‘Ô“Ç‚İ‚İˆ—‚ğ‚±‚±‚ÉÀ‘•
+    // çŠ¶æ…‹èª­ã¿è¾¼ã¿å‡¦ç†ã‚’ã“ã“ã«å®Ÿè£…
 }

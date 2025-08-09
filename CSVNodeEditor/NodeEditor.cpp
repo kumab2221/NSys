@@ -14,28 +14,28 @@ BaseNode::BaseNode(int id, const std::string& name)
 NodeEditor::NodeEditor()
     : nextNodeId(1)
 {
-    // ImNodes‚Ì‰Šú‰»
+    // ImNodesã®åˆæœŸåŒ–
     ImNodes::CreateContext();
 }
 
 NodeEditor::~NodeEditor()
 {
-    // ImNodes‚ÌI—¹ˆ—
+    // ImNodesã®çµ‚äº†å‡¦ç†
     ImNodes::DestroyContext();
 }
 
 void NodeEditor::Render()
 {
-    // ImNodes‚ÌŠJn
+    // ImNodesã®é–‹å§‹
     ImNodes::BeginNodeEditor();
 
-    // ƒm[ƒh‚ğ•`‰æ
+    // ãƒãƒ¼ãƒ‰ã‚’æç”»
     RenderNodes();
 
-    // ImNodes‚ÌI—¹
+    // ImNodesã®çµ‚äº†
     ImNodes::EndNodeEditor();
 
-    // ƒm[ƒh‚Ìì¬Eíœˆ—
+    // ãƒãƒ¼ãƒ‰ã®ä½œæˆãƒ»å‰Šé™¤å‡¦ç†
     HandleNodeCreation();
     HandleNodeDeletion();
 }
@@ -73,25 +73,25 @@ void NodeEditor::RenderNodes()
 {
     for (const auto& node : nodes)
     {
-        // ƒm[ƒh‚ÌŠJn
+        // ãƒãƒ¼ãƒ‰ã®é–‹å§‹
         ImNodes::BeginNode(node->GetID());
 
-        // ƒm[ƒh‚Ìƒ^ƒCƒgƒ‹
+        // ãƒãƒ¼ãƒ‰ã®ã‚¿ã‚¤ãƒˆãƒ«
         ImNodes::BeginNodeTitleBar();
         ImGui::TextUnformatted(node->GetName().c_str());
         ImNodes::EndNodeTitleBar();
 
-        // ƒm[ƒh‚Ì“à—e‚ğ•`‰æ
+        // ãƒãƒ¼ãƒ‰ã®å†…å®¹ã‚’æç”»
         node->Render();
 
-        // ƒm[ƒh‚ÌI—¹
+        // ãƒãƒ¼ãƒ‰ã®çµ‚äº†
         ImNodes::EndNode();
     }
 }
 
 void NodeEditor::HandleNodeCreation()
 {
-    // ‰EƒNƒŠƒbƒNƒƒjƒ…[‚Åƒm[ƒh‚ğì¬
+    // å³ã‚¯ãƒªãƒƒã‚¯ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã§ãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
     if (ImGui::IsWindowHovered() && ImGui::IsMouseClicked(1))
     {
         ImGui::OpenPopup("NodeCreationMenu");
@@ -99,30 +99,30 @@ void NodeEditor::HandleNodeCreation()
 
     if (ImGui::BeginPopup("NodeCreationMenu"))
     {
-        if (ImGui::MenuItem("CSV“Ç‚İ‚İ"))
+        if (ImGui::MenuItem("CSVèª­ã¿è¾¼ã¿"))
         {
-            // CSV“Ç‚İ‚İƒm[ƒh‚ğì¬
-            // ÀÛ‚ÌÀ‘•‚Å‚ÍANodeTypes.h‚Å’è‹`‚³‚ê‚½ƒNƒ‰ƒX‚ğg—p
+            // CSVèª­ã¿è¾¼ã¿ãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
+            // å®Ÿéš›ã®å®Ÿè£…ã§ã¯ã€NodeTypes.hã§å®šç¾©ã•ã‚ŒãŸã‚¯ãƒ©ã‚¹ã‚’ä½¿ç”¨
         }
-        if (ImGui::MenuItem("ƒtƒBƒ‹ƒ^["))
+        if (ImGui::MenuItem("ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼"))
         {
-            // ƒtƒBƒ‹ƒ^[ƒm[ƒh‚ğì¬
+            // ãƒ•ã‚£ãƒ«ã‚¿ãƒ¼ãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
         }
-        if (ImGui::MenuItem("ƒ\[ƒg"))
+        if (ImGui::MenuItem("ã‚½ãƒ¼ãƒˆ"))
         {
-            // ƒ\[ƒgƒm[ƒh‚ğì¬
+            // ã‚½ãƒ¼ãƒˆãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
         }
-        if (ImGui::MenuItem("WŒv"))
+        if (ImGui::MenuItem("é›†è¨ˆ"))
         {
-            // WŒvƒm[ƒh‚ğì¬
+            // é›†è¨ˆãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
         }
-        if (ImGui::MenuItem("Œ‹‡"))
+        if (ImGui::MenuItem("çµåˆ"))
         {
-            // Œ‹‡ƒm[ƒh‚ğì¬
+            // çµåˆãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
         }
-        if (ImGui::MenuItem("CSVo—Í"))
+        if (ImGui::MenuItem("CSVå‡ºåŠ›"))
         {
-            // o—Íƒm[ƒh‚ğì¬
+            // å‡ºåŠ›ãƒãƒ¼ãƒ‰ã‚’ä½œæˆ
         }
         ImGui::EndPopup();
     }
@@ -130,13 +130,13 @@ void NodeEditor::HandleNodeCreation()
 
 void NodeEditor::HandleNodeDeletion()
 {
-    // ‘I‘ğ‚³‚ê‚½ƒm[ƒh‚ğíœiAPI•ÏX‘Î‰j
+    // é¸æŠã•ã‚ŒãŸãƒãƒ¼ãƒ‰ã‚’å‰Šé™¤ï¼ˆAPIå¤‰æ›´å¯¾å¿œï¼‰
     for (const auto& node : nodes) {
         int nodeId = node->GetID();
         if (ImNodes::IsNodeSelected(nodeId)) {
             if (ImGui::IsKeyPressed(ImGuiKey_Delete)) {
                 RemoveNode(nodeId);
-                break; // 1‚Â‚¾‚¯íœ
+                break; // 1ã¤ã ã‘å‰Šé™¤
             }
         }
     }

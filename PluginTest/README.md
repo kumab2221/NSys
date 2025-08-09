@@ -1,46 +1,46 @@
 # PluginTest
 
-NSysƒvƒ‰ƒOƒCƒ“ƒA[ƒLƒeƒNƒ`ƒƒ‚ÌƒeƒXƒg—pƒvƒƒWƒFƒNƒg‚Å‚·B
+NSysãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚¢ãƒ¼ã‚­ãƒ†ã‚¯ãƒãƒ£ã®ãƒ†ã‚¹ãƒˆç”¨ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã§ã™ã€‚
 
-## ƒvƒƒWƒFƒNƒg\¬
+## ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆæ§‹æˆ
 
 ```
 PluginTest/
-„¥„Ÿ„Ÿ external/
-„    „¤„Ÿ„Ÿ imgui/          # ImGuiƒ‰ƒCƒuƒ‰ƒŠiƒTƒuƒ‚ƒWƒ…[ƒ‹j
-„¥„Ÿ„Ÿ dllmain.cpp         # ƒvƒ‰ƒOƒCƒ“‚ÌƒƒCƒ“ƒGƒ“ƒgƒŠ[ƒ|ƒCƒ“ƒg
-„¥„Ÿ„Ÿ framework.h         # ‹¤’Êƒwƒbƒ_[ƒtƒ@ƒCƒ‹
-„¥„Ÿ„Ÿ PluginTest.vcxproj  # Visual Studio ƒvƒƒWƒFƒNƒgƒtƒ@ƒCƒ‹
-„¤„Ÿ„Ÿ README.md           # ‚±‚Ìƒtƒ@ƒCƒ‹
+â”œâ”€â”€ external/
+â”‚   â””â”€â”€ imgui/          # ImGuiãƒ©ã‚¤ãƒ–ãƒ©ãƒªï¼ˆã‚µãƒ–ãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ï¼‰
+â”œâ”€â”€ dllmain.cpp         # ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ãƒ¡ã‚¤ãƒ³ã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆ
+â”œâ”€â”€ framework.h         # å…±é€šãƒ˜ãƒƒãƒ€ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«
+â”œâ”€â”€ PluginTest.vcxproj  # Visual Studio ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆãƒ•ã‚¡ã‚¤ãƒ«
+â””â”€â”€ README.md           # ã“ã®ãƒ•ã‚¡ã‚¤ãƒ«
 ```
 
-## ‹@”\
+## æ©Ÿèƒ½
 
-- ImGuiƒRƒ“ƒeƒLƒXƒg‚ğ‹¤—L‚µ‚ÄƒƒCƒ“ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Æ˜AŒg
-- ƒVƒ“ƒvƒ‹‚ÈƒEƒBƒ“ƒhƒE‚ÆƒRƒ“ƒgƒ[ƒ‹‚Ì•\¦
-- ƒvƒ‰ƒOƒCƒ“‚Ì•\¦/”ñ•\¦Ø‚è‘Ö‚¦‹@”\
+- ImGuiã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’å…±æœ‰ã—ã¦ãƒ¡ã‚¤ãƒ³ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã¨é€£æº
+- ã‚·ãƒ³ãƒ—ãƒ«ãªã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¨ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«ã®è¡¨ç¤º
+- ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®è¡¨ç¤º/éè¡¨ç¤ºåˆ‡ã‚Šæ›¿ãˆæ©Ÿèƒ½
 
-## ƒvƒ‰ƒOƒCƒ“ƒCƒ“ƒ^[ƒtƒF[ƒX
+## ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹
 
-### ƒGƒNƒXƒ|[ƒgŠÖ”
+### ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆé–¢æ•°
 
 ```cpp
 extern "C" __declspec(dllexport) void run(ImGuiContext* shared_context, const void* inputs, void* outputs)
 ```
 
-- `shared_context`: ƒƒCƒ“ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚©‚ç‹¤—L‚³‚ê‚éImGuiƒRƒ“ƒeƒLƒXƒg
-- `inputs`: “ü—Íƒf[ƒ^iŒ»İ‚Í–¢g—pj
-- `outputs`: o—Íƒf[ƒ^iŒ»İ‚Í–¢g—pj
+- `shared_context`: ãƒ¡ã‚¤ãƒ³ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‹ã‚‰å…±æœ‰ã•ã‚Œã‚‹ImGuiã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆ
+- `inputs`: å…¥åŠ›ãƒ‡ãƒ¼ã‚¿ï¼ˆç¾åœ¨ã¯æœªä½¿ç”¨ï¼‰
+- `outputs`: å‡ºåŠ›ãƒ‡ãƒ¼ã‚¿ï¼ˆç¾åœ¨ã¯æœªä½¿ç”¨ï¼‰
 
-### À‘•—á
+### å®Ÿè£…ä¾‹
 
 ```cpp
 extern "C" __declspec(dllexport) void run(ImGuiContext* shared_context, const void* inputs, void* outputs)
 {
-    // ImGui‚ÌƒRƒ“ƒeƒLƒXƒg‚ğƒZƒbƒg
+    // ImGuiã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚»ãƒƒãƒˆ
     ImGui::SetCurrentContext(shared_context);
 
-    // ƒvƒ‰ƒOƒCƒ“‚ÌUI‚ğ•`‰æ
+    // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®UIã‚’æç”»
     static bool show_window = true;
     static float slider_value = 0.0f;
 
@@ -52,25 +52,25 @@ extern "C" __declspec(dllexport) void run(ImGuiContext* shared_context, const vo
 }
 ```
 
-## ƒrƒ‹ƒh•û–@
+## ãƒ“ãƒ«ãƒ‰æ–¹æ³•
 
-1. Visual Studio‚Å`PluginTest.vcxproj`‚ğŠJ‚­
-2. İ’è‚ğRelease x64‚É•ÏX
-3. ƒrƒ‹ƒh‚ğÀs
-4. ¶¬‚³‚ê‚½DLL‚ğ`Plugins/PluginTest/`ƒtƒHƒ‹ƒ_‚É”z’u
+1. Visual Studioã§`PluginTest.vcxproj`ã‚’é–‹ã
+2. è¨­å®šã‚’Release x64ã«å¤‰æ›´
+3. ãƒ“ãƒ«ãƒ‰ã‚’å®Ÿè¡Œ
+4. ç”Ÿæˆã•ã‚ŒãŸDLLã‚’`Plugins/PluginTest/`ãƒ•ã‚©ãƒ«ãƒ€ã«é…ç½®
 
-## ƒvƒ‰ƒOƒCƒ“‚Ì”z’u
+## ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®é…ç½®
 
-ƒƒCƒ“ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÍˆÈ‰º‚Ì\‘¢‚Åƒvƒ‰ƒOƒCƒ“‚ğ’T‚µ‚Ü‚·F
+ãƒ¡ã‚¤ãƒ³ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã¯ä»¥ä¸‹ã®æ§‹é€ ã§ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã‚’æ¢ã—ã¾ã™ï¼š
 
 ```
 NSys.exe
-„¤„Ÿ„Ÿ Plugins/
-    „¤„Ÿ„Ÿ PluginTest/
-        „¤„Ÿ„Ÿ PluginTest.dll
+â””â”€â”€ Plugins/
+    â””â”€â”€ PluginTest/
+        â””â”€â”€ PluginTest.dll
 ```
 
-## Ql‘—¿
+## å‚è€ƒè³‡æ–™
 
 - [ImGui Documentation](https://github.com/ocornut/imgui)
-- [NSys ƒƒCƒ“ƒvƒƒWƒFƒNƒg](../NSys/README.md)
+- [NSys ãƒ¡ã‚¤ãƒ³ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆ](../NSys/README.md)

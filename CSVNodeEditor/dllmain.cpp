@@ -2,7 +2,7 @@
 #include "imgui.h"
 #include "CSVNodeEditor.h"
 
-// ƒOƒ[ƒoƒ‹•Ï”
+// ã‚°ãƒ­ãƒ¼ãƒãƒ«å¤‰æ•°
 static CSVNodeEditor* g_csvNodeEditor = nullptr;
 
 BOOL APIENTRY DllMain(HMODULE hModule,
@@ -13,14 +13,14 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-        // ƒvƒ‰ƒOƒCƒ“‰Šú‰»
+        // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³åˆæœŸåŒ–
         g_csvNodeEditor = new CSVNodeEditor();
         break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
         break;
     case DLL_PROCESS_DETACH:
-        // ƒvƒ‰ƒOƒCƒ“I—¹ˆ—
+        // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³çµ‚äº†å‡¦ç†
         if (g_csvNodeEditor)
         {
             delete g_csvNodeEditor;
@@ -31,16 +31,16 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     return TRUE;
 }
 
-// ƒvƒ‰ƒOƒCƒ“‚ÌƒƒCƒ“•`‰æŠÖ”‚ğƒGƒNƒXƒ|[ƒg
+// ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ãƒ¡ã‚¤ãƒ³æç”»é–¢æ•°ã‚’ã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆ
 extern "C" __declspec(dllexport) void run(ImGuiContext* shared_context, const void* inputs, void* outputs)
 {
-    // ImGui‚ÌƒRƒ“ƒeƒLƒXƒg‚ğƒZƒbƒg
+    // ImGuiã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚’ã‚»ãƒƒãƒˆ
     ImGui::SetCurrentContext(shared_context);
 
-    // CSVNodeEditor‚ª‰Šú‰»‚³‚ê‚Ä‚¢‚é‚©ƒ`ƒFƒbƒN
+    // CSVNodeEditorãŒåˆæœŸåŒ–ã•ã‚Œã¦ã„ã‚‹ã‹ãƒã‚§ãƒƒã‚¯
     if (g_csvNodeEditor)
     {
-        // ƒvƒ‰ƒOƒCƒ“‚ÌƒƒCƒ“•`‰æˆ—
+        // ãƒ—ãƒ©ã‚°ã‚¤ãƒ³ã®ãƒ¡ã‚¤ãƒ³æç”»å‡¦ç†
         g_csvNodeEditor->Render();
     }
 }

@@ -1,4 +1,4 @@
-#ifndef IMGUI_WINDOW_MANAGER_H
+﻿#ifndef IMGUI_WINDOW_MANAGER_H
 #define IMGUI_WINDOW_MANAGER_H
 
 #include "imgui.h"

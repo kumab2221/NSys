@@ -9,7 +9,8 @@
       "Bash(setup.bat)",
       "Bash(powershell.exe:*)",
       "Bash(msbuild:*)",
-      "Bash(x64\\Debug\\NSys.exe:*)"
+      "Bash(x64\\Debug\\NSys.exe:*)",
+      "Bash(cl:*)"
     ],
     "deny": []
   }

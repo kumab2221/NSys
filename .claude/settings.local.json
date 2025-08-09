@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir:*)"
+      "Bash(mkdir:*)",
+      "Bash(git submodule:*)",
+      "Bash(where msbuild)",
+      "Bash(where devenv)",
+      "Bash(dir:*)",
+      "Bash(setup.bat)",
+      "Bash(powershell.exe:*)"
     ],
     "deny": []
   }

@@ -241,11 +241,11 @@ int CSVData::GetColumnIndex(const std::string& column) const
 bool CSVData::IsNumeric(const std::string& value) const
 {
     if (value.empty()) return false;
-    
     try
     {
-        std::stod(value);
-        return true;
+        size_t pos;
+        std::stod(value, &pos);
+        return pos == value.size(); // 全部が数値ならtrue
     }
     catch (const std::exception&)
     {

@@ -10,7 +10,7 @@
 #include <iostream>
 #include <locale>
 
-#include "ImGuiWindowManager.h"
+#include "PluginManager.h"
 
 #ifdef _DEBUG
 #define DX12_ENABLE_DEBUG_LAYER
@@ -50,7 +50,8 @@ struct Plugin {
     bool visible; // 表示状態を管理
 };
 
-static std::vector<Plugin> plugins; // ロードされたプラグインリスト
+static std::vector<Plugin> plugins; // ロードされたプラグインリスト（既存システム）
+static NSys::PluginManager g_newPluginManager; // 新プラグインマネージャー
 
 std::wstring GetExecutableDirectory() {
     wchar_t buffer[MAX_PATH];
@@ -151,9 +152,9 @@ struct ExampleDescriptorHeapAllocator
 {
     ID3D12DescriptorHeap* Heap = nullptr;
     D3D12_DESCRIPTOR_HEAP_TYPE  HeapType = D3D12_DESCRIPTOR_HEAP_TYPE_NUM_TYPES;
-    D3D12_CPU_DESCRIPTOR_HANDLE HeapStartCpu;
-    D3D12_GPU_DESCRIPTOR_HANDLE HeapStartGpu;
-    UINT                        HeapHandleIncrement;
+    D3D12_CPU_DESCRIPTOR_HANDLE HeapStartCpu{};
+    D3D12_GPU_DESCRIPTOR_HANDLE HeapStartGpu{};
+    UINT                        HeapHandleIncrement{};
     ImVector<int>               FreeIndices;
 
     void Create(ID3D12Device* device, ID3D12DescriptorHeap* heap)
@@ -280,6 +281,16 @@ int main(int argc, char* argv[])
     // Pluginsフォルダ内のプラグインをロード
     std::wstring pluginDir = GetExecutableDirectory() + L"\\Plugins";
     LoadPlugins(pluginDir);
+    
+    // 新しいPluginManagerのテスト（既存システムと並行動作）
+    if (g_newPluginManager.Initialize("plugins")) {
+        std::cout << "New PluginManager initialized successfully\n";
+        std::cout << "Max plugins: " << g_newPluginManager.GetMaxPluginCount() << "\n";
+        
+        // テスト用プラグインをスキャン
+        auto newPlugins = g_newPluginManager.ScanForPlugins("plugins");
+        std::cout << "Found " << newPlugins.size() << " plugin files\n";
+    }
 
     // Main loop
     bool done = false;
@@ -336,7 +347,6 @@ int main(int argc, char* argv[])
 
             ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
             ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), ImGuiDockNodeFlags_None);
-
             ImGui::End();
             ImGui::PopStyleVar(3);
         
@@ -348,8 +358,6 @@ int main(int argc, char* argv[])
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
-
-        ShowHelloWorldWindow(show_demo_window, show_another_window, clear_color);
 
         // 3. Show another simple window.
         if (show_another_window)
@@ -416,6 +424,9 @@ int main(int argc, char* argv[])
 
     // プラグインのクリーンアップ
     UnloadPlugins(plugins);
+    
+    // 新PluginManagerのクリーンアップ
+    g_newPluginManager.Shutdown();
 
     // Cleanup
     ImGui_ImplDX12_Shutdown();

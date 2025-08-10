@@ -42,7 +42,10 @@
     <ClCompile Include="external\imgui\imgui_widgets.cpp">
       <Filter>external</Filter>
     </ClCompile>
-    <ClCompile Include="ImGuiWindowManager.cpp">
+    <ClCompile Include="PluginManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceLocator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,10 +74,16 @@
     <ClInclude Include="external\imgui\imstb_truetype.h">
       <Filter>external</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiWindowManager.h">
+    <ClInclude Include="json.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="json.hpp">
+    <ClInclude Include="ImGuiCore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="interfaces.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

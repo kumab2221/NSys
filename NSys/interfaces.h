@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <string>
 #include <vector>
@@ -8,13 +8,12 @@
 #include <cstdint>
 #include <type_traits>
 
-// ImGui forward declarations (最小限のモック)
-struct ImVec2 {
+struct Vec2 {
     float x = 0.0f;
     float y = 0.0f;
     
-    ImVec2() = default;
-    ImVec2(float x, float y) : x(x), y(y) {}
+    Vec2() = default;
+    Vec2(float x, float y) : x(x), y(y) {}
 };
 
 namespace NSys {
@@ -210,9 +209,10 @@ public:
  * @brief ウィンドウ情報構造体
  */
 struct WindowInfo {
+    std::string id;
     std::string title;
-    ImVec2 defaultSize = {800, 600};
-    ImVec2 minSize = {200, 150};
+    Vec2 defaultSize = {800, 600};
+    Vec2 minSize = {200, 150};
     bool dockable = true;
     bool closeable = true;
     bool collapsible = true;
@@ -305,6 +305,17 @@ public:
     
     static void RegisterPluginManager(std::unique_ptr<IPluginManager> service) {
         s_pluginManager = std::move(service);
+    }
+    
+    // Generic service registration template (for test compatibility)
+    template<typename T>
+    static void RegisterService(T* service) {
+        // This is for test compatibility - do not use in production
+        // The unique_ptr versions above are preferred
+        if constexpr (std::is_same_v<T, ILoggingService>) {
+            s_loggingService.reset(service);
+        }
+        // Add other service types as needed for tests
     }
     
     // Service cleanup

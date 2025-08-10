@@ -1,4 +1,4 @@
-#include "interfaces.h"
+﻿#include "interfaces.h"
 
 namespace NSys {
 

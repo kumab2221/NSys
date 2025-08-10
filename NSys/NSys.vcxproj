@@ -145,7 +145,7 @@
     <ClCompile Include="external\imgui\imgui_draw.cpp" />
     <ClCompile Include="external\imgui\imgui_tables.cpp" />
     <ClCompile Include="external\imgui\imgui_widgets.cpp" />
-    <ClCompile Include="ImGuiWindowManager.cpp" />
+    <ClCompile Include="PluginManager.cpp" />
     <ClCompile Include="ServiceLocator.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -159,7 +159,8 @@
     <ClInclude Include="external\imgui\imstb_rectpack.h" />
     <ClInclude Include="external\imgui\imstb_textedit.h" />
     <ClInclude Include="external\imgui\imstb_truetype.h" />
-    <ClInclude Include="ImGuiWindowManager.h" />
+    <ClInclude Include="ImGuiCore.h" />
+    <ClInclude Include="PluginManager.h" />
     <ClInclude Include="interfaces.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

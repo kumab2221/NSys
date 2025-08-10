@@ -17,7 +17,10 @@
       "Bash(devenv NSys.sln /Build Debug)",
       "Bash(\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Professional\\MSBuild\\Current\\Bin\\MSBuild.exe\" NSys.sln /p:Configuration=Debug /p:Platform=x64 /v:minimal)",
       "Bash(\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin\\MSBuild.exe\" NSys.sln /p:Configuration=Debug /p:Platform=x64 /v:minimal)",
-      "Bash(devenv NSys.sln)"
+      "Bash(devenv NSys.sln)",
+      "Bash(\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\MSBuild\\Current\\Bin\\MSBuild.exe\" \"D:\\Src\\NSys\\NSys.sln\" /p:Configuration=Debug /p:Platform=x64 /v:minimal)",
+      "Bash(\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\" \"D:\\Src\\NSys\\NSys.sln\" /p:Configuration=Debug /p:Platform=x64 /v:minimal)",
+      "Bash(\"C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\MSBuild.exe\" NSys.sln /p:Configuration=Debug /p:Platform=x64 /v:minimal)"
     ],
     "deny": []
   }
